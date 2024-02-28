@@ -7,7 +7,7 @@ import java.util.Scanner;
  *
  * @author Ruper
  */
-public class Ej_06_DivisionV4 {
+public class Ej_06_DivisionMejoradaV2 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int numerador = 0, denominador = 0;
