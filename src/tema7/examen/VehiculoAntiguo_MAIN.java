@@ -8,10 +8,10 @@ import java.util.Scanner;
  *
  * @author Ruper
  */
-public class Vehiculo_MAIN {
+public class VehiculoAntiguo_MAIN {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        Vehiculo[] vehiculos = new Vehiculo[5]; // Array para 5 vehículos
+        VehiculoAntiguo[] vehiculos = new VehiculoAntiguo[5]; // Array para 5 vehículos
 
         for (int i = 0; i < vehiculos.length; i++) {
             try {
@@ -37,7 +37,7 @@ public class Vehiculo_MAIN {
                 System.out.print("Color: ");
                 String color = scanner.nextLine();
 
-                vehiculos[i] = new Vehiculo(marca, modelo, ano, color);
+                vehiculos[i] = new VehiculoAntiguo(marca, modelo, ano, color);
             } catch (Exception e) {
                 // Manejar cualquier otra excepción inesperada
                 System.out.println("Ocurrió un error inesperado: " + e.getMessage());
@@ -46,7 +46,7 @@ public class Vehiculo_MAIN {
         }
 
         System.out.println("\nDatos de los vehículos:");
-        for (Vehiculo vehiculo : vehiculos) {
+        for (VehiculoAntiguo vehiculo : vehiculos) {
             if (vehiculo != null) { // Verificar que el objeto Vehículo fue creado correctamente
                 vehiculo.mostrarDatos();
                 if (vehiculo.esAntiguo()) {

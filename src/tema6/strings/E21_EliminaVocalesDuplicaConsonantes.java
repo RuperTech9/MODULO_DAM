@@ -1,5 +1,5 @@
 
-package tema7.examen;
+package tema6.strings;
 
 import java.util.Arrays;
 
@@ -9,7 +9,7 @@ import java.util.Arrays;
  * Además, cada consonante debe duplicarse.
  * @author Ruper
  */
-public class EliminaVocalesDuplicaConsonantes {
+public class E21_EliminaVocalesDuplicaConsonantes {
     public static String transformarCadena(String cadena) {
         StringBuilder nuevaCadena = new StringBuilder();
         for (char c : cadena.toCharArray()) {

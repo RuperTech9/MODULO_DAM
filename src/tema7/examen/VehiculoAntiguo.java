@@ -10,8 +10,8 @@ package tema7.examen;
  * con datos introducidos por el usuario y mostrar sus datos y si son antiguos o no.
  * @author Ruper
  */
-// Clase Vehiculo
-public class Vehiculo {
+// Clase VehiculoAntiguo
+public class VehiculoAntiguo {
     // Atributos
     private String marca;
     private String modelo;
@@ -19,7 +19,7 @@ public class Vehiculo {
     private String color;
 
     // Constructor
-    public Vehiculo(String marca, String modelo, int ano, String color) {
+    public VehiculoAntiguo(String marca, String modelo, int ano, String color) {
         this.marca = marca;
         this.modelo = modelo;
         this.ano = ano;
