@@ -1,4 +1,4 @@
-package tema6.tarea6;
+package tema7.tarea7;
 
 import javax.swing.JOptionPane;
 
@@ -64,7 +64,7 @@ public class TemperaturasNavacerradaV2 {
     } // FIN METODO
     
     // METODOS PUBLICOS
-    // METODO para imprimir las temperaturas de un mes específico mostrando la máxima y mínima registradas
+    // METODO para imprimir las temperaturas de un mes con la temperatura máxima y mínima registradas
     public void imprimirMes(int mes) {
         StringBuilder mesElegido = new StringBuilder("Mes de " + getNombreMes(mes) + ": ");
     

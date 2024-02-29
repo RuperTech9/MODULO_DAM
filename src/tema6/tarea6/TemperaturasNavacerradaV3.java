@@ -65,7 +65,7 @@ public class TemperaturasNavacerradaV3 {
     } // FIN METODO
     
     // METODOS PUBLICOS
-    // METODO para imprimir las temperaturas de un mes específico mostrando la máxima y mínima registradas
+    // METODO para imprimir las temperaturas de un mes mostrando la máxima y mínima registradas
     public void imprimirMes(int mes) {
         StringBuilder mesElegido = new StringBuilder("Mes de " + getNombreMes(mes) + ": ");
         
@@ -76,7 +76,7 @@ public class TemperaturasNavacerradaV3 {
         for (int dia = 0; dia < temperaturasAnuales[mes].length; dia++) {
             Temperaturas temp = temperaturasAnuales[mes][dia];
             
-            // Actualizar las temperaturas máxima y mínima si es necesario
+            // Actualizar las temperaturas máxima y mínima
             if (temp.getMaxima() > temperaturaMaxima) {
                 temperaturaMaxima = temp.getMaxima();
             }
@@ -84,7 +84,7 @@ public class TemperaturasNavacerradaV3 {
                 temperaturaMinima = temp.getMinima();
             }
         
-            // Opcional: Mostrar todas las temperaturas del mes
+            // Mostrar todas las temperaturas del mes
             mesElegido.append(dia + 1).append(":").append(temp.toString()).append(", ");
         }
     
