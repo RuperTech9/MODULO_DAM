@@ -7,7 +7,7 @@ package tema6.tarea6;
  */
 public class TemperaturasNavacerrada_MAIN {
     public static void main(String[] args) {
-        TemperaturasNavacerrada puerto = new TemperaturasNavacerrada();
+        TemperaturasNavacerradaV3 puerto = new TemperaturasNavacerradaV3();
         puerto.mostrarMenu();
     } // FIN MAIN
 } // FIN CLASE
