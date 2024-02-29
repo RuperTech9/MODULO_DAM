@@ -14,7 +14,6 @@ public class Fibonnacci {
     public static void main(String[] args) {
         Scanner teclado = new Scanner(System.in);
         int numero, i;
-        
         do{
             System.out.print("Introduce un numero: ");
             numero = teclado.nextInt();
@@ -29,7 +28,5 @@ public class Fibonnacci {
             fibo1 = fibo2 - fibo1;
         }
         System.out.println("");
-        
-    }
-    
+    }   
 }
