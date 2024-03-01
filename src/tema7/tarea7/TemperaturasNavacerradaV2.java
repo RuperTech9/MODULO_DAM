@@ -1,6 +1,7 @@
 package tema7.tarea7;
 
-import javax.swing.JOptionPane;
+import java.util.InputMismatchException;
+import java.util.Scanner;
 
 /**
  *
@@ -95,47 +96,210 @@ public class TemperaturasNavacerradaV2 {
         } else {
             mesElegido.append("\nNo hay datos registrados para este mes.");
         }
-    
-        JOptionPane.showMessageDialog(null, mesElegido.toString());
+        System.out.println(mesElegido.toString());
+        //JOptionPane.showMessageDialog(null, mesElegido.toString());
     } // FIN METODO
+    
+    // Método para añadir o actualizar temperaturas para un día específico
+    public void ingresarTemperatura(int mes, int dia, int maxima, int minima) {
+        if (mes < 0 || mes >= TOTAL_MESES || dia < 1 || dia > DIAS_POR_MES[mes]) {
+            System.out.println("Fecha no válida.");
+            return;
+        }
+        // Ajuste para el índice del array (0 basado)
+        temperaturasAnuales[mes][dia - 1] = new Temperaturas(maxima, minima);
+        System.out.println("Temperatura actualizada para " + getNombreMes(mes) + " día " + dia + ": Maxima=" + maxima + " Minima=" + minima);
+    }
+
+    // Método para calcular y mostrar el promedio de temperaturas por mes
+    public void mostrarPromediosMensuales() {
+        for (int mes = 0; mes < TOTAL_MESES; mes++) {
+            int sumaMax = 0, sumaMin = 0, diasValidos = 0;
+            for (int dia = 0; dia < DIAS_POR_MES[mes]; dia++) {
+                Temperaturas t = temperaturasAnuales[mes][dia];
+                if (t.getMaxima() != 0 || t.getMinima() != 0) { // Consideramos días con temperaturas registradas
+                    sumaMax += t.getMaxima();
+                    sumaMin += t.getMinima();
+                    diasValidos++;
+                }
+            }
+            if (diasValidos > 0) {
+                System.out.println(getNombreMes(mes) + " - Promedio Máxima: " + (sumaMax / diasValidos) + "º, Promedio Mínima: " + (sumaMin / diasValidos) + "º");
+            } else {
+                System.out.println(getNombreMes(mes) + " - Sin datos registrados.");
+            }
+        }
+    }
+
+    // Método para calcular y mostrar las temperaturas máxima y mínima absolutas del año
+    public void mostrarTemperaturasExtremasAnuales() {
+        int maxAbsoluta = Integer.MIN_VALUE, minAbsoluta = Integer.MAX_VALUE;
+        for (int mes = 0; mes < TOTAL_MESES; mes++) {
+            for (int dia = 0; dia < DIAS_POR_MES[mes]; dia++) {
+                Temperaturas t = temperaturasAnuales[mes][dia];
+                if (t.getMaxima() > maxAbsoluta) maxAbsoluta = t.getMaxima();
+                if (t.getMinima() < minAbsoluta) minAbsoluta = t.getMinima();
+            }
+        }
+        System.out.println("Temperatura máxima absoluta del año: " + maxAbsoluta + "º");
+        System.out.println("Temperatura mínima absoluta del año: " + minAbsoluta + "º");
+    }
     
     // METODO para mostrar el menu
-    public void mostrarMenu(){
-        String menu = "TEMPERATURAS PUERTO DE NAVACERRADA"
-                + "\n---------------------------------------------------------------"
-                + "\nOpciones:\n1. Elegir mes\n2. Salir";
-        int opcion;
-        
-        do {
-            try {
-                String opcionesMenu = JOptionPane.showInputDialog(null, menu);
-                opcion = Integer.parseInt(opcionesMenu);
+    public void mostrarMenu() {
+        Scanner scanner = new Scanner(System.in);
+        String menu = "TEMPERATURAS PUERTO DE NAVACERRADA" +
+                      "\n---------------------------------------------------------------" +
+                      "\nOpciones:" +
+                      "\n1. Elegir mes y mostrar temperaturas" +
+                      "\n2. Ingresar nueva temperatura" +
+                      "\n3. Mostrar promedios mensuales de temperaturas" +
+                      "\n4. Mostrar temperaturas máxima y mínima del año" +
+                      "\n5. Salir";
+        int opcion = 0;
 
-                if (opcion == 1) {
-                    try {
-                        // Solicitar al usuario que introduzca el número del mes
-                        String mesElegido = JOptionPane.showInputDialog(null, "Introduce el número del mes (1-12):");
-                        int mes = Integer.parseInt(mesElegido) - 1; // Convertir el mes elegido a int y ajustar para el índice del array (0-11).
-                        if (mes >= 0 && mes < 12) { // Si es válido, mostrar las temperaturas.
-                            imprimirMes(mes);
-                        } else {
-                            JOptionPane.showMessageDialog(null, "Opción no válida. Debe ser entre 1 y 12.");
-                        } // FIN IF INTERNO
-                    } catch (NumberFormatException e) {
-                        JOptionPane.showMessageDialog(null, "Opción no válida. Por favor, introduce un número."); // Mensaje si no es numero.
-                    } // FIN TRY-CATCH INTERNO
-                } else if (opcion != 2) {
-                    JOptionPane.showMessageDialog(null, "Opción no válida. Por favor, elige 1 o 2.");
-                } // FIN IF EXTERNO
-            } catch (NumberFormatException e) {
-                JOptionPane.showMessageDialog(null, "Opción no válida. Por favor, introduce un número."); // Mensaje si no es numero.
-                opcion = 0; // Reinicio la opción para que el bucle continue
-            } // FIN TRY-CATCH EXTERNO
-        } while (opcion != 2); // FIN DO-WHILE
-    } // FIN METODO
+        do {
+            System.out.println(menu);
+            System.out.print("Selecciona una opción: ");
+            while (true) {
+                try {
+                    opcion = scanner.nextInt();
+                    break; // Sal del bucle si se recibe un entero
+                } catch (InputMismatchException e) {
+                    System.out.println("Por favor, introduce un número válido.");
+                    scanner.next(); // Descarta la entrada incorrecta
+                    System.out.print("Selecciona una opción: ");
+                }
+            }
+
+            try {
+                switch (opcion) {
+                    case 1:
+                        manejarOpcionElegirMes(scanner);
+                        break;
+                    case 2:
+                        manejarOpcionIngresarTemperatura(scanner);
+                        break;
+                    case 3:
+                        mostrarPromediosMensuales();
+                        break;
+                    case 4:
+                        mostrarTemperaturasExtremasAnuales();
+                        break;
+                    case 5:
+                        System.out.println("Saliendo...");
+                        break;
+                    default:
+                        System.out.println("Opción no válida. Por favor, elige una opción del 1 al 5.");
+                        break;
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Entrada no válida, por favor intenta nuevamente.");
+                scanner.nextLine(); // Descarta la entrada incorrecta para evitar bucles infinitos
+            }
+        } while (opcion != 5);
+    }
+    private void manejarOpcionElegirMes(Scanner scanner) {
+        System.out.print("Introduce el número del mes (1-12): ");
+        int mes = scanner.nextInt() - 1;
+        if (mes >= 0 && mes < 12) {
+            imprimirMes(mes);
+        } else {
+            System.out.println("Opción no válida. Debe ser entre 1 y 12.");
+        }
+    }
+
+    // Método para manejar la opción de ingresar temperatura, con manejo de excepciones para cada entrada
+    private void manejarOpcionIngresarTemperatura(Scanner scanner) {
+        int mes = -1, dia = -1, maxima = Integer.MIN_VALUE, minima = Integer.MAX_VALUE;
+        boolean entradaValida = false;
+
+        while (!entradaValida) {
+            try {
+                System.out.print("Introduce el número del mes para ingresar temperatura (1-12): ");
+                mes = scanner.nextInt() - 1;
+                System.out.print("Introduce el día del mes: ");
+                dia = scanner.nextInt();
+                System.out.print("Introduce la temperatura máxima: ");
+                maxima = scanner.nextInt();
+                System.out.print("Introduce la temperatura mínima: ");
+                minima = scanner.nextInt();
+                entradaValida = true; // Se establece como true si todas las entradas son válidas
+            } catch (InputMismatchException e) {
+                System.out.println("Entrada no válida, por favor introduce números enteros.");
+                scanner.nextLine(); // Descarta la entrada incorrecta para evitar bucles infinitos
+            }
+        }
+
+        if (mes >= 0 && mes < TOTAL_MESES && dia >= 1 && dia <= DIAS_POR_MES[mes]) {
+            ingresarTemperatura(mes, dia, maxima, minima);
+        } else {
+            System.out.println("Fecha no válida.");
+        }
+    }
 } // FIN CLASE
 
 /*
  * Para encontrar la temperatura máxima y mínima registrada en un mes, puedes inicializar las variables de temperatura máxima y mínima con los valores de la primera entrada de temperaturas del mes correspondiente. 
  * Luego, comparas las temperaturas de cada día con estos valores para encontrar la máxima y mínima registrada. 
  */
+
+/*
+// METODO para mostrar el menu
+    public void mostrarMenu() {
+    String menu = "TEMPERATURAS PUERTO DE NAVACERRADA" +
+                  "\n---------------------------------------------------------------" +
+                  "\nOpciones:" +
+                  "\n1. Elegir mes y mostrar temperaturas" +
+                  "\n2. Ingresar nueva temperatura" +
+                  "\n3. Mostrar promedios mensuales de temperaturas" +
+                  "\n4. Mostrar temperaturas máxima y mínima del año" +
+                  "\n5. Salir";
+    int opcion;
+
+    do {
+        try {
+            String opcionSeleccionada = JOptionPane.showInputDialog(null, menu);
+            opcion = Integer.parseInt(opcionSeleccionada);
+
+            switch (opcion) {
+                case 1:
+                    String mesElegido = JOptionPane.showInputDialog(null, "Introduce el número del mes (1-12):");
+                    int mes = Integer.parseInt(mesElegido) - 1;
+                    if (mes >= 0 && mes < 12) {
+                        imprimirMes(mes);
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Opción no válida. Debe ser entre 1 y 12.");
+                    }
+                    break;
+                case 2:
+                    mesElegido = JOptionPane.showInputDialog(null, "Introduce el número del mes para ingresar temperatura (1-12):");
+                    String diaElegido = JOptionPane.showInputDialog(null, "Introduce el día del mes:");
+                    String tempMaxima = JOptionPane.showInputDialog(null, "Introduce la temperatura máxima:");
+                    String tempMinima = JOptionPane.showInputDialog(null, "Introduce la temperatura mínima:");
+                    mes = Integer.parseInt(mesElegido) - 1;
+                    int dia = Integer.parseInt(diaElegido);
+                    int maxima = Integer.parseInt(tempMaxima);
+                    int minima = Integer.parseInt(tempMinima);
+                    ingresarTemperatura(mes, dia, maxima, minima);
+                    break;
+                case 3:
+                    mostrarPromediosMensuales();
+                    break;
+                case 4:
+                    mostrarTemperaturasExtremasAnuales();
+                    break;
+                case 5:
+                    JOptionPane.showMessageDialog(null, "Saliendo...");
+                    break;
+                default:
+                    JOptionPane.showMessageDialog(null, "Opción no válida. Por favor, elige una opción del 1 al 5.");
+                    break;
+            }
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "Opción no válida. Por favor, introduce un número válido.");
+                opcion = 0; // Esto permite que el bucle continúe en caso de excepción
+            }
+        } while (opcion != 5);
+    }
+*/
