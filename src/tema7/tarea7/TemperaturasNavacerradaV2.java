@@ -134,3 +134,8 @@ public class TemperaturasNavacerradaV2 {
         } while (opcion != 2); // FIN DO-WHILE
     } // FIN METODO
 } // FIN CLASE
+
+/*
+ * Para encontrar la temperatura máxima y mínima registrada en un mes, puedes inicializar las variables de temperatura máxima y mínima con los valores de la primera entrada de temperaturas del mes correspondiente. 
+ * Luego, comparas las temperaturas de cada día con estos valores para encontrar la máxima y mínima registrada. 
+ */
