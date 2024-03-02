@@ -22,7 +22,7 @@ public class CadenaV2 {
 
     // METODO que muestra la cadena
     public void escribirCadena() {
-        System.out.println(cadena);;
+        System.out.println(cadena);
     } // FIN METODO
 
     // METODO que muestra la longitud de la cadena

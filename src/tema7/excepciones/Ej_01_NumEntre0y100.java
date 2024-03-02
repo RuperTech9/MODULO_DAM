@@ -17,14 +17,14 @@ public class Ej_01_NumEntre0y100 {
          public static void main(String[] args) {
                   int numero = -1;
                   int intentos = 0;
-                  String linea;
+                  String linea; // Declara la variable linea, que se usará para almacenar temporalmente la entrada del usuario como texto.
                   BufferedReader teclado = new BufferedReader(new InputStreamReader(System.in));
                   //Ejecuta el programa hasta que el usuario introduzca un numero entre 0 y 100.
                   do {
                            try {
                                     System.out.print("Introduzca un n�mero entre 0 y 100: ");
                                     linea = teclado.readLine();
-                                    numero = Integer.parseInt(linea);
+                                    numero = Integer.parseInt(linea); // Intenta convertir el texto almacenado en linea a un entero, asignándolo a numero.
                            } catch (IOException e) {
                                     System.out.println("Error al leer del teclado.");
                            } catch (NumberFormatException e) {
