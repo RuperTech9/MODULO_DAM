@@ -356,6 +356,29 @@ public class CadenaV2 {
         return Arrays.equals(arrPalabra1, arrPalabra2);
     }
     
+    // Método para reemplazar una palabra dentro de la cadena
+    public void reemplazarPalabra(String palabraAntigua, String palabraNueva) { // + "X. Reemplazar palabra\n"
+        String texto = new String(this.cadena);
+        String textoModificado = texto.replaceAll(palabraAntigua, palabraNueva);
+        
+        // Actualizar la cadena y el tamaño de la instancia con el texto modificado
+        this.cadena = textoModificado.toCharArray();
+        this.tamaño = textoModificado.length();
+        
+        // Mostrar el texto modificado
+        System.out.println("Texto modificado:");
+        System.out.println(textoModificado);
+    }
+    /*
+    case 2:
+                    System.out.println("Palabra a reemplazar:");
+                    String palabraAntigua = scanner.nextLine();
+                    System.out.println("Nueva palabra:");
+                    String palabraNueva = scanner.nextLine();
+                    reemplazarPalabra(palabraAntigua, palabraNueva);
+                    break;
+    */
+    
     // METODO para representar la cadena
     @Override
     public String toString() {
