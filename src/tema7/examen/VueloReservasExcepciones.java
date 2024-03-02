@@ -128,3 +128,76 @@ public class VueloReservasExcepciones {
         sistema.mostrarMenu();
     }
 }
+
+
+/*
+public void mostrarMenu() {
+        Scanner scanner = new Scanner(System.in);
+        int opcion = 0;
+
+        do {
+            try {
+                System.out.println("\nSistema de Reservas de Vuelos");
+                System.out.println("1. Añadir Vuelo");
+                System.out.println("2. Realizar Reserva");
+                System.out.println("3. Cancelar Reserva");
+                System.out.println("4. Mostrar Información de Vuelos");
+                System.out.println("5. Salir");
+                System.out.print("Seleccione una opción: ");
+                opcion = scanner.nextInt();
+                scanner.nextLine(); // Limpiar el buffer del scanner
+
+                switch (opcion) {
+                    case 1:
+                        System.out.print("Ingrese código de vuelo: ");
+                        String codigo = scanner.nextLine().trim();
+                        while (codigo.isEmpty()) {
+                            System.out.println("El código de vuelo no puede estar vacío. Por favor, inténtelo de nuevo:");
+                            codigo = scanner.nextLine().trim();
+                        }
+                        System.out.print("Ingrese destino: ");
+                        String destino = scanner.nextLine().trim();
+                        while (destino.isEmpty()) {
+                            System.out.println("El destino no puede estar vacío. Por favor, inténtelo de nuevo:");
+                            destino = scanner.nextLine().trim();
+                        }
+                        System.out.print("Ingrese capacidad: ");
+                        int capacidad = scanner.nextInt();
+                        scanner.nextLine(); // Importante para limpiar el buffer después de leer un número
+                        añadirVuelo(new Vuelo(codigo, destino, capacidad));
+                        break;
+                    case 2:
+                        System.out.print("Ingrese código de vuelo para realizar reserva: ");
+                        codigo = scanner.nextLine().trim();
+                        while (codigo.isEmpty()) {
+                            System.out.println("El código de vuelo no puede estar vacío. Por favor, inténtelo de nuevo:");
+                            codigo = scanner.nextLine().trim();
+                        }
+                        realizarReserva(codigo);
+                        break;
+                    case 3:
+                        System.out.print("Ingrese código de vuelo para cancelar reserva: ");
+                        codigo = scanner.nextLine().trim();
+                        while (codigo.isEmpty()) {
+                            System.out.println("El código de vuelo no puede estar vacío. Por favor, inténtelo de nuevo:");
+                            codigo = scanner.nextLine().trim();
+                        }
+                        cancelarReserva(codigo);
+                        break;
+                    case 4:
+                        mostrarInformacionVuelos();
+                        break;
+                    case 5:
+                        System.out.println("Saliendo del sistema...");
+                        break;
+                    default:
+                        System.out.println("Opción no válida, por favor intente de nuevo.");
+                        break;
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Entrada inválida. Por favor, introduce un número.");
+                scanner.nextLine(); // Limpiar el buffer del scanner para evitar un bucle infinito
+            }
+        } while (opcion != 5);
+    }
+*/
