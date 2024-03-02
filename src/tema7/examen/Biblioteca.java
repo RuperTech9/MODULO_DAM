@@ -25,7 +25,7 @@ public class Biblioteca {
     public void añadirLibro(String titulo, String autor) {
         if (contadorLibros >= catalogo.length) {
             // Crear un nuevo array temporal con un tamaño mayor al actual
-            String[][] catalogoTemp = new String[catalogo.length + 10][2]; // Aumenta el tamaño en 10
+            String[][] catalogoTemp = new String[catalogo.length + 1][2]; // Aumenta el tamaño
             // Copiar el contenido del array actual al nuevo array
             for (int i = 0; i < catalogo.length; i++) {
                 catalogoTemp[i][0] = catalogo[i][0];
