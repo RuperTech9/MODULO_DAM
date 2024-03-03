@@ -1,4 +1,4 @@
-package tema7.tarea7;
+package tema7.examen;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -68,7 +68,10 @@ public class TemperaturasNavacerradaV2 {
     // METODO para imprimir las temperaturas de un mes con la temperatura máxima y mínima registradas
     public void imprimirMes(int mes) {
         StringBuilder mesElegido = new StringBuilder("Mes de " + getNombreMes(mes) + ": ");
-    
+        // StringBuilder mesElegido = new StringBuilder();
+        // Añadir el nombre del mes en una línea separada
+        // mesElegido.append("Mes de ").append(getNombreMes(mes)).append(":\n");
+        
         // Verificar que el mes tiene al menos un día registrado para inicializar máxima y mínima
         if (temperaturasAnuales[mes].length > 0) {
             // Inicializar con los valores del primer día del mes
@@ -85,11 +88,18 @@ public class TemperaturasNavacerradaV2 {
                 if (temp.getMinima() < temperaturaMinima) {
                     temperaturaMinima = temp.getMinima();
                 }
-            
+                // Añadir la coma antes de cada temperatura excepto la primera
+                if (dia > 0) {
+                    mesElegido.append(", ");
+                }
                 // Mostrar todas las temperaturas del mes
-                mesElegido.append(dia + 1).append(":").append(temp.toString()).append(", ");
+                mesElegido.append(dia + 1).append(":").append(temp.toString());
+                // FORMA 2 Mostrar todas las temperaturas del mes, cada una en una nueva línea
+                // mesElegido.append(dia + 1).append(":").append(temp.toString()).append("\n");
             }
-        
+            // FORMA 2 Eliminar el último salto de línea para evitar uno extra al final
+            // mesElegido.deleteCharAt(mesElegido.length() - 1);
+            
             // Mostrar las temperaturas máxima y mínima registradas
             mesElegido.append("\nTemperatura máxima registrada: ").append(temperaturaMaxima).append("ºC");
             mesElegido.append("\nTemperatura mínima registrada: ").append(temperaturaMinima).append("ºC");
@@ -144,17 +154,108 @@ public class TemperaturasNavacerradaV2 {
         System.out.println("Temperatura mínima absoluta del año: " + minAbsoluta + "º");
     }
     
+    // Método para calcular y mostrar la temperatura media de un mes específico
+    public void mostrarTemperaturaMedia(int mes) {
+        if (temperaturasAnuales[mes].length > 0) {
+            double sumaTemperaturas = 0;
+            int contadorTemperaturas = 0;
+            
+            for (int dia = 0; dia < temperaturasAnuales[mes].length; dia++) {
+                Temperaturas tempDia = temperaturasAnuales[mes][dia];
+                sumaTemperaturas += tempDia.getMaxima() + tempDia.getMinima();
+                contadorTemperaturas += 2; // Sumamos dos porque consideramos tanto la máxima como la mínima
+            }
+
+            double temperaturaMedia = sumaTemperaturas / contadorTemperaturas;
+            System.out.println("La temperatura media para el mes de " + getNombreMes(mes) + " es: " + temperaturaMedia + "ºC");// String.format("%.2f", temperaturaMedia) + "ºC");
+        } else {
+            System.out.println("No hay datos registrados para el mes de " + getNombreMes(mes) + ".");
+        }
+    }
+    
+    // Método para calcular y mostrar la temperatura media del año
+    public void mostrarTemperaturaMediaAnual() {
+        double sumaTemperaturas = 0;
+        int contadorTemperaturas = 0;
+        
+        for (int mes = 0; mes < TOTAL_MESES; mes++) {
+            for (int dia = 0; dia < temperaturasAnuales[mes].length; dia++) {
+                Temperaturas tempDia = temperaturasAnuales[mes][dia];
+                sumaTemperaturas += tempDia.getMaxima() + tempDia.getMinima();
+                contadorTemperaturas += 2; // Sumamos dos por cada día, por la máxima y la mínima
+            }
+        }
+        
+        if (contadorTemperaturas > 0) { // Asegurar que hay datos para evitar división por cero
+            double temperaturaMediaAnual = sumaTemperaturas / contadorTemperaturas;
+            System.out.println("La temperatura media anual es: " + String.format("%.2f", temperaturaMediaAnual) + "ºC");
+        } else {
+            System.out.println("No hay datos suficientes para calcular la temperatura media anual.");
+        }
+    }
+    
+    // Método para calcular y mostrar la temperatura media de los meses seleccionados
+    /*public void mostrarTemperaturaMediaDeMesesSeleccionados(int[] mesesSeleccionados) {
+        double sumaTemperaturas = 0;
+        int contadorTemperaturas = 0;
+        
+        for (int indiceMes : mesesSeleccionados) {
+            if (indiceMes >= 0 && indiceMes < TOTAL_MESES) { // Verificar que el índice del mes sea válido
+                for (int dia = 0; dia < temperaturasAnuales[indiceMes].length; dia++) {
+                    Temperaturas tempDia = temperaturasAnuales[indiceMes][dia];
+                    sumaTemperaturas += tempDia.getMaxima() + tempDia.getMinima();
+                    contadorTemperaturas += 2; // Sumamos dos por cada día, por la máxima y la mínima
+                }
+            }
+        }
+        
+        if (contadorTemperaturas > 0) { // Asegurar que hay datos para evitar división por cero
+            double temperaturaMedia = sumaTemperaturas / contadorTemperaturas;
+            System.out.println("La temperatura media para los meses seleccionados es: " + String.format("%.2f", temperaturaMedia) + "ºC");
+        } else {
+            System.out.println("No hay datos suficientes para calcular la temperatura media de los meses seleccionados.");
+        }
+    }*/
+    // Método para calcular y mostrar la temperatura media de los meses seleccionados
+    public void mostrarTemperaturaMediaMesesSeleccionados() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Introduce los números de los meses que deseas incluir en el cálculo separados por espacio (Enero=1, Diciembre=12):");
+        String[] mesesInput = scanner.nextLine().split(" ");
+        double sumaTemperaturas = 0;
+        int contadorTemperaturas = 0;
+    
+        for (String mesStr : mesesInput) {
+            int mes = Integer.parseInt(mesStr) - 1; // Ajustar al índice basado en cero
+            if (mes >= 0 && mes < TOTAL_MESES) {
+                for (int dia = 0; dia < temperaturasAnuales[mes].length; dia++) {
+                    Temperaturas tempDia = temperaturasAnuales[mes][dia];
+                    sumaTemperaturas += tempDia.getMaxima() + tempDia.getMinima();
+                    contadorTemperaturas += 2; // Sumamos dos por cada día, por la máxima y la mínima
+                }
+            }
+        }
+
+        if (contadorTemperaturas > 0) { // Asegurar que hay datos para evitar división por cero
+            double temperaturaMediaSeleccionada = sumaTemperaturas / contadorTemperaturas;
+            System.out.println("La temperatura media para los meses seleccionados es: " + String.format("%.2f", temperaturaMediaSeleccionada) + "ºC");
+        } else {
+            System.out.println("No se han seleccionado meses válidos o no hay datos suficientes para calcular la temperatura media.");
+        }
+    }
+    
     // METODO para mostrar el menu
     public void mostrarMenu() {
         Scanner scanner = new Scanner(System.in);
-        String menu = "TEMPERATURAS PUERTO DE NAVACERRADA" +
+        String menu = "\nTEMPERATURAS PUERTO DE NAVACERRADA" +
                       "\n---------------------------------------------------------------" +
                       "\nOpciones:" +
                       "\n1. Elegir mes y mostrar temperaturas" +
                       "\n2. Ingresar nueva temperatura" +
                       "\n3. Mostrar promedios mensuales de temperaturas" +
                       "\n4. Mostrar temperaturas máxima y mínima del año" +
-                      "\n5. Salir";
+                      "\n5. Mostrar temperatura media de un mes" +
+                      "\n6. Mostrar temperatura media de meses seleccionados" +
+                      "\n7. Salir";
         int opcion = 0;
 
         do {
@@ -186,17 +287,30 @@ public class TemperaturasNavacerradaV2 {
                         mostrarTemperaturasExtremasAnuales();
                         break;
                     case 5:
+                        System.out.print("Introduce el número del mes (1-12) para calcular la temperatura media: ");
+                        int mesElegido = scanner.nextInt() - 1;
+                        if (mesElegido >= 0 && mesElegido < TOTAL_MESES) {
+                        mostrarTemperaturaMedia(mesElegido);
+                        } else {
+                            System.out.println("Número de mes no válido. Por favor, introduce un número entre 1 y 12.");
+                        }
+                        break;
+                    case 6:
+                        mostrarTemperaturaMediaMesesSeleccionados();
+                        break;
+                    case 7:
                         System.out.println("Saliendo...");
                         break;
                     default:
-                        System.out.println("Opción no válida. Por favor, elige una opción del 1 al 5.");
+                        System.out.println("Opción no válida. Por favor, elige una opción del 1 al 6.");
                         break;
+                    
                 }
             } catch (InputMismatchException e) {
                 System.out.println("Entrada no válida, por favor intenta nuevamente.");
                 scanner.nextLine(); // Descarta la entrada incorrecta para evitar bucles infinitos
             }
-        } while (opcion != 5);
+        } while (opcion != 7);
     }
     private void manejarOpcionElegirMes(Scanner scanner) {
         System.out.print("Introduce el número del mes (1-12): ");

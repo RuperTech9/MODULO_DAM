@@ -1,5 +1,6 @@
 
-package tema6.tarea6;
+package tema7.examen;
+
 
 /**
  *
