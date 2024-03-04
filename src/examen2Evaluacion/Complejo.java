@@ -1,5 +1,5 @@
 
-package tema7.examen;
+package examen2Evaluacion;
 
 /**
  *

@@ -1,4 +1,4 @@
-package tema7.examen;
+package examen2Evaluacion;
 
 import java.util.InputMismatchException;
 import java.util.Arrays;
