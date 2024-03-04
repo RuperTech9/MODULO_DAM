@@ -108,7 +108,7 @@ class SumaDeNumerosNegativos {
         Scanner scanner = new Scanner(System.in);
         int opcion = 0;
         do {
-            System.out.println("\\n1- Introducir valores Array.");
+            System.out.println("\n1- Introducir valores Array.");
             System.out.println("2- Calcular la media.");
             System.out.println("3- Calcular la suma.");
             System.out.println("4- Mostrar el Array ordenado de menor a mayor.");
