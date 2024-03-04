@@ -143,3 +143,19 @@ class SumaDeNumerosNegativos {
         } while (opcion != 5);
     }
 }
+
+
+/*
+La línea de código Arrays.sort(pares, new Comparator<Par>() { inicia una llamada al método sort de la clase Arrays en Java, que se utiliza para ordenar un array.
+
+El método sort puede tomar un array y un Comparator como argumentos. El Comparator es una interfaz que define un método de comparación que sort usará para determinar el orden de los elementos del array.
+
+La creación de new Comparator<Par>() { está creando una clase anónima que implementa la interfaz Comparator para la clase Par. Dentro de las llaves {}, se define el método compare, que es el método que debe implementarse cuando se usa la interfaz Comparator.
+
+El método compare toma dos objetos del tipo especificado (Par en este caso) y devuelve un entero. La devolución de este entero determina cómo se ordenan los dos objetos:
+
+Un número negativo si el primer objeto debe ir antes que el segundo.
+Cero si se consideran iguales en términos de orden.
+Un número positivo si el primer objeto debe ir después del segundo.
+En el contexto de tu código, este Comparator está comparando dos objetos Par basándose en la suma de sus valores negativo y positivo (a través del método sumar() de la clase Par). Esto significa que el array pares se ordenará en función de la suma de los números negativos y positivos de cada objeto Par.
+*/
