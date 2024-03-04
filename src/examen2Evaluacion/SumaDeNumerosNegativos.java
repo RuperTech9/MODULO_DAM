@@ -1,43 +1,16 @@
+
 package examen2Evaluacion;
 
-import java.util.InputMismatchException;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
-class NumeroNoNegativoException extends Exception {
-    public NumeroNoNegativoException(String message) {
-        super(message);
-    }
-}
-
-class NumeroNoPositivoException extends Exception {
-    public NumeroNoPositivoException(String message) {
-        super(message);
-    }
-}
-
-class Par {
-    int negativo;
-    int positivo;
-
-    public Par(int negativo, int positivo) throws NumeroNoNegativoException, NumeroNoPositivoException {
-        if (negativo >= 0) {
-            throw new NumeroNoNegativoException("El número debe ser negativo.");
-        }
-        if (positivo <= 0) {
-            throw new NumeroNoPositivoException("El número debe ser positivo.");
-        }
-        this.negativo = negativo;
-        this.positivo = positivo;
-    }
-    
-    public int sumar() {
-        return negativo + positivo;
-    }
-}
-
-class SumaDeNumerosNegativos {
+/**
+ *
+ * @author Ruper
+ */
+public class SumaDeNumerosNegativos {
     Par[] pares = new Par[5];
     Scanner scanner = new Scanner(System.in);
     boolean valoresIntroducidos = false;
@@ -68,7 +41,7 @@ class SumaDeNumerosNegativos {
             return 0; // Return 0 if values are not introduced yet
         }
         int sum = 0;
-        for (Par par : pares) { // for-each que recorre el array pares.
+        for (Par par : pares) {
             sum += par.sumar();
         }
         return (double) sum / pares.length;
@@ -80,7 +53,7 @@ class SumaDeNumerosNegativos {
             return 0; // Return 0 if values are not introduced yet
         }
         int sum = 0;
-        for (Par par : pares) { // for-each que recorre el array pares.
+        for (Par par : pares) {
             sum += par.sumar();
         }
         return sum;
@@ -91,15 +64,14 @@ class SumaDeNumerosNegativos {
             System.out.println("Primero debes introducir los valores.");
             return; // Do not proceed if values are not introduced yet
         }
-        Arrays.sort(pares, new Comparator<Par>() { // Toma dos argumentos: el arreglo a ordenar y un objeto Comparator. Comparator es una interfaz funcional en Java que permite definir un método para comparar objetos. 
-            // Instancia anónima de la interfaz Comparator<Par>. Esto significa que estás creando una implementación directamente en el lugar donde la necesitas, sin necesidad de definir una clase separada.
+        Arrays.sort(pares, new Comparator<Par>() {
             @Override
-            public int compare(Par p1, Par p2) { // Este método compara dos objetos Par y devuelve un valor entero que indica su relación de orden. En este caso, compara el resultado de la suma de los valores dentro de cada objeto Par.
-                return Integer.compare(p1.sumar(), p2.sumar()); // Integer.compare(). Esto asegura que los objetos se ordenen según el resultado de la suma de sus valores.
+            public int compare(Par p1, Par p2) {
+                return Integer.compare(p1.sumar(), p2.sumar());
             }
         });
-        for (Par par : pares) { // for-each que recorre el array pares.
-            System.out.println("(" + par.negativo + ", " + par.positivo + ")"); // Imprime cada objeto Par
+        for (Par par : pares) {
+            System.out.println("(" + par.negativo + ", " + par.positivo + ")");
         }
     }
 
@@ -108,7 +80,7 @@ class SumaDeNumerosNegativos {
         Scanner scanner = new Scanner(System.in);
         int opcion = 0;
         do {
-            System.out.println("\\n1- Introducir valores Array.");
+            System.out.println("\n1- Introducir valores Array.");
             System.out.println("2- Calcular la media.");
             System.out.println("3- Calcular la suma.");
             System.out.println("4- Mostrar el Array ordenado de menor a mayor.");
