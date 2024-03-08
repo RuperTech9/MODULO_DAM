@@ -17,11 +17,11 @@ class NumeroNoPositivoException extends Exception {
     }
 }
 
-class Par {
+class ParV2 {
     int negativo;
     int positivo;
 
-    public Par(int negativo, int positivo) throws NumeroNoNegativoException, NumeroNoPositivoException {
+    public ParV2(int negativo, int positivo) throws NumeroNoNegativoException, NumeroNoPositivoException {
         if (negativo >= 0) {
             throw new NumeroNoNegativoException("El número debe ser negativo.");
         }
@@ -32,13 +32,21 @@ class Par {
         this.positivo = positivo;
     }
     
+    public int getNegativo() {
+        return negativo;
+    }
+
+    public int getPositivo() {
+        return positivo;
+    }
+    
     public int sumar() {
         return negativo + positivo;
     }
 }
 
 class SumaDeNumerosNegativos {
-    Par[] pares = new Par[5];
+    ParV2[] pares = new ParV2[5];
     Scanner scanner = new Scanner(System.in);
     boolean valoresIntroducidos = false;
 
@@ -50,7 +58,7 @@ class SumaDeNumerosNegativos {
                 negativo = scanner.nextInt();
                 System.out.print("Introduce un número positivo: ");
                 positivo = scanner.nextInt();
-                pares[i] = new Par(negativo, positivo);
+                pares[i] = new ParV2(negativo, positivo);
                 i++;
             } catch (InputMismatchException e) {
                 System.out.println("Por favor, introduce un número válido.");
@@ -68,7 +76,7 @@ class SumaDeNumerosNegativos {
             return 0; // Return 0 if values are not introduced yet
         }
         int sum = 0;
-        for (Par par : pares) { // for-each que recorre el array pares.
+        for (ParV2 par : pares) { // for-each que recorre el array pares.
             sum += par.sumar();
         }
         return (double) sum / pares.length;
@@ -80,13 +88,13 @@ class SumaDeNumerosNegativos {
             return 0; // Return 0 if values are not introduced yet
         }
         int sum = 0;
-        for (Par par : pares) { // for-each que recorre el array pares.
+        for (ParV2 par : pares) { // for-each que recorre el array pares.
             sum += par.sumar();
         }
         return sum;
     }
 
-    public void mostrarArrayOrdenado() {
+    /*public void mostrarArrayOrdenado() {
         if (!valoresIntroducidos) {
             System.out.println("Primero debes introducir los valores.");
             return; // Do not proceed if values are not introduced yet
@@ -94,15 +102,26 @@ class SumaDeNumerosNegativos {
         Arrays.sort(pares, new Comparator<Par>() { // Toma dos argumentos: el arreglo a ordenar y un objeto Comparator. Comparator es una interfaz funcional en Java que permite definir un método para comparar objetos. 
             // Instancia anónima de la interfaz Comparator<Par>. Esto significa que estás creando una implementación directamente en el lugar donde la necesitas, sin necesidad de definir una clase separada.
             @Override
-            public int compare(Par p1, Par p2) { // Este método compara dos objetos Par y devuelve un valor entero que indica su relación de orden. En este caso, compara el resultado de la suma de los valores dentro de cada objeto Par.
+            public int compare(ParV2 p1, ParV2 p2) { // Este método compara dos objetos ParV2 y devuelve un valor entero que indica su relación de orden. En este caso, compara el resultado de la suma de los valores dentro de cada objeto ParV2.
                 return Integer.compare(p1.sumar(), p2.sumar()); // Integer.compare(). Esto asegura que los objetos se ordenen según el resultado de la suma de sus valores.
             }
         });
-        for (Par par : pares) { // for-each que recorre el array pares.
-            System.out.println("(" + par.negativo + ", " + par.positivo + ")"); // Imprime cada objeto Par
+        for (ParV2 par : pares) { // for-each que recorre el array pares.
+            System.out.println("(" + par.negativo + ", " + par.positivo + ")"); // Imprime cada objeto ParV2
         }
+    }*/
+    
+    
+    public void mostrarArrayOrdenado() {
+        int[] numeros = new int[pares.length * 2];
+        for (int i = 0, j = 0; i < pares.length; i++) {
+            numeros[j++] = pares[i].getNegativo();
+            numeros[j++] = pares[i].getPositivo();
+        }
+        Arrays.sort(numeros);
+        System.out.println("Array ordenado de menor a mayor: " + Arrays.toString(numeros));
     }
-
+    
     public static void main(String[] args) {
         SumaDeNumerosNegativos programa = new SumaDeNumerosNegativos();
         Scanner scanner = new Scanner(System.in);
