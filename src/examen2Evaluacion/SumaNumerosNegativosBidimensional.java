@@ -14,7 +14,7 @@ public class SumaNumerosNegativosBidimensional {
     Scanner sc = new Scanner(System.in);
     boolean valoresIntroducidos = false;
     
-    // METODOS
+    // METODO para introducir valores
     public void introducirValores() {
         for (int i = 0; i < numeros[0].length; i++) {
             try {
@@ -39,16 +39,8 @@ public class SumaNumerosNegativosBidimensional {
         }
         valoresIntroducidos = true;
     }
-
-    public double calcularMedia() {
-        if (!valoresIntroducidos) {
-            System.out.println("Primero debes introducir los valores.");
-            return 0;
-        }
-        int suma = calcularSuma(); // Reutilizar el método calcularSuma
-        return (double) suma / (numeros[0].length + numeros[1].length);
-    }
-
+    
+    // METODO para calcular la suma
     public int calcularSuma() {
         if (!valoresIntroducidos) {
             System.out.println("Primero debes introducir los valores.");
@@ -60,7 +52,19 @@ public class SumaNumerosNegativosBidimensional {
         }
         return suma;
     }
+    
+    // METODO para calcular la media
+    public double calcularMedia() {
+        if (!valoresIntroducidos) {
+            System.out.println("Primero debes introducir los valores.");
+            return 0;
+        }
+        int suma = calcularSuma(); // Reutilizar el método calcularSuma
+        return (double) suma / (numeros[0].length + numeros[1].length);
+    }
 
+    
+    // METODO para mostrar el array ordenado
     public void mostrarArrayOrdenado() {
         int[] todosLosNumeros = new int[numeros[0].length + numeros[1].length];
         System.arraycopy(numeros[0], 0, todosLosNumeros, 0, numeros[0].length);
@@ -69,6 +73,7 @@ public class SumaNumerosNegativosBidimensional {
         System.out.println("Array ordenado de menor a mayor: " + Arrays.toString(todosLosNumeros));
     }
     
+    // METODO para mostrar el menu
     public void mostrarMenu() {
         int opcion = 0;
         do {

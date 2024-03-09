@@ -20,7 +20,8 @@ class NumeroNoPositivoException extends Exception {
 public class Pares {
     int negativo;
     int positivo;
-
+    
+    // CONSTRUCTOR
     public Pares(int negativo, int positivo) throws NumeroNoNegativoException, NumeroNoPositivoException {
         if (negativo >= 0) {
             throw new NumeroNoNegativoException("El número debe ser negativo.");
@@ -32,6 +33,7 @@ public class Pares {
         this.positivo = positivo;
     }
     
+    // GETTERS
     public int getNegativo() {
         return negativo;
     }
@@ -40,6 +42,7 @@ public class Pares {
         return positivo;
     }
     
+    // METODO sumar
     public int sumar() {
         return negativo + positivo;
     }
