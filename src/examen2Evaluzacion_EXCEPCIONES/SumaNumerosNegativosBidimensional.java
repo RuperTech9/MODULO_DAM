@@ -1,9 +1,21 @@
 
-package examen2Evaluacion;
+package examen2Evaluzacion_EXCEPCIONES;
 
 import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+
+class NumeroNoNegativoException extends Exception {
+    public NumeroNoNegativoException(String message) {
+        super(message);
+    }
+}
+
+class NumeroNoPositivoException extends Exception {
+    public NumeroNoPositivoException(String message) {
+        super(message);
+    }
+}
 
 /**
  *
@@ -28,11 +40,11 @@ public class SumaNumerosNegativosBidimensional {
                 if (positivo <= 0) {
                     throw new NumeroNoPositivoException("El número debe ser positivo.");
                 }
-                numeros[0][i] = negativo; // Almacenar negativo en la primera fila
-                numeros[1][i] = positivo; // Almacenar positivo en la segunda fila
+                numeros[0][i] = negativo; // Almaceno negativo en la primera fila
+                numeros[1][i] = positivo; // Almaceno positivo en la segunda fila
             } catch (InputMismatchException e) {
                 System.out.println("Por favor, introduce un número válido.");
-                sc.next(); // Descartar entrada incorrecta
+                sc.next(); // Salto de linea
             } catch (NumeroNoNegativoException | NumeroNoPositivoException e) {
                 System.out.println(e.getMessage());
             }
@@ -59,7 +71,7 @@ public class SumaNumerosNegativosBidimensional {
             System.out.println("Primero debes introducir los valores.");
             return 0;
         }
-        int suma = calcularSuma(); // Reutilizar el método calcularSuma
+        int suma = calcularSuma(); // Reutilizo el método calcularSuma
         return (double) suma / (numeros[0].length + numeros[1].length);
     }
 
@@ -68,7 +80,7 @@ public class SumaNumerosNegativosBidimensional {
     public void mostrarArrayOrdenado() {
         int[] todosLosNumeros = new int[numeros[0].length + numeros[1].length];
         System.arraycopy(numeros[0], 0, todosLosNumeros, 0, numeros[0].length);
-        System.arraycopy(numeros[1], 0, todosLosNumeros, numeros[0].length, numeros[1].length);
+        System.arraycopy(numeros[1], 0, todosLosNumeros, numeros[0].length, numeros[1].length); //  la posición inicial en el array destino ahora es numeros[0].length, lo que asegura que la copia comience justo después del último elemento copiado del primer array.
         Arrays.sort(todosLosNumeros);
         System.out.println("Array ordenado de menor a mayor: " + Arrays.toString(todosLosNumeros));
     }
