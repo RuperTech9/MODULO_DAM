@@ -1,5 +1,5 @@
 
-package tema10;
+package tema10.ejemplos;
 
 // LIBRERIAS IMPORTADAS
 import java.util.ArrayList;
