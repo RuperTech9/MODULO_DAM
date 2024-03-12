@@ -18,6 +18,7 @@ public class ImprimirColecciones {
         c.add("perro");
         c.add("gato");
         c.add("perro");
+        System.out.println("Numero de Elementos: " + c.size()); // Numero de elementos
         return c;
     }
     
@@ -26,6 +27,7 @@ public class ImprimirColecciones {
         m.put("perro", "San Bernardo");
         m.put("gato", "Montes");
         m.put("perro", "Presa Canario");
+        System.out.println("Elementos Mapas: " + m.size());
         return m;
     }
     
@@ -34,6 +36,9 @@ public class ImprimirColecciones {
         System.out.println("ArrayList: " + rellenar(new ArrayList())); // Devuelve todos los valores x orden de inserción (cola)
         System.out.println("HashSet: " + rellenar(new HashSet())); // Devuelve elementos no repetidos (cola)
         System.out.println("Mapa: " + rellenar(new HashMap())); // pila con elementos no repetidos
+        
+        // TAMAÑOS
+        
         
         // HashSet. Contiene un conjunto de objetos, que le permite determinar más fácil y rápidamente si un objeto está en el conjunto o no.
         // HashMap. Se imprimen entre llaves con el signo = (clave=valor)
