@@ -1,19 +1,20 @@
 
-package tema6.tarea6;
+package examen2Evaluzacion_EXCEPCIONES;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
  *
  * @author alumno
  */
-public class NotasAlumnosV3 {
+public class NotasAlumnosExcepciones {
     private static final int NUM_ALUMNOS = 10;
     private String[] nombres;
     private int[] notas;
     private int numAlumnos;
 
-    public NotasAlumnosV3() {
+    public NotasAlumnosExcepciones() {
         nombres = new String[NUM_ALUMNOS];
         notas = new int[NUM_ALUMNOS];
         numAlumnos = 0;
@@ -105,21 +106,27 @@ public class NotasAlumnosV3 {
     }
 
     public void mostrarMenu() {
-        Scanner scanner = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
         System.out.println("Opciones:\n"
                 + "1. Listado de alumnos ordenados alfabéticamente\n"
                 + "2. Listado de alumnos por nota de programación\n"
                 + "3. Añadir un nuevo alumno\n"
                 + "4. Salir");
-        int opcion;
+        int opcion = 0;
         do {
-            System.out.print("Elige una opción: ");
-            while (!scanner.hasNextInt()) {
-                System.out.println("Opción no válida. Introduce un número.");
-                scanner.next();
-                System.out.print("Elige una opción: ");
-            }
-            opcion = scanner.nextInt();
+            boolean opcionCorrecta = false;
+            do{
+                try{
+                    System.out.print("\nElige una opción: ");
+                    opcion = sc.nextInt();
+                    opcionCorrecta = true;
+                }catch (InputMismatchException e) {
+                    System.out.println("Opcion no valida. Introduce un número");
+                    sc.next();
+                    opcionCorrecta = false;
+                }
+            }while (!opcionCorrecta);
+            
             switch (opcion) {
                 case 1:
                     mostrarAlumnosOrdenNombre();
@@ -128,27 +135,33 @@ public class NotasAlumnosV3 {
                     mostrarAlumnosOrdenNota();
                     break;
                 case 3:
-                    scanner.nextLine(); // Limpiar buffer
-                    System.out.print("Introduce el nombre del alumno nuevo: ");
-                    String nombre = scanner.nextLine();
-                    if (nombre == null || nombre.trim().isEmpty()) {
-                        System.out.println("No se ha ingresado un nombre válido.");
-                        break;
-                    }
-                    int nota = obtenerNotaValida(scanner);
+                    sc.nextLine(); // Limpiar buffer
+                    String nombre = "";
+                    boolean nombreValido = false;
+                    do{
+                        System.out.print("Introduce el nombre del alumno nuevo: ");
+                        nombre = sc.nextLine();
+                        if (nombre == null || nombre.trim().isEmpty()) {
+                            System.out.println("No se ha ingresado un nombre válido.");
+                            nombreValido = false;
+                        } else {
+                            nombreValido = true;
+                        }
+                    }while(!nombreValido);
+                    int nota = obtenerNotaValida(sc);
                     añadirAlumno(nombre, nota);
                     break;
                 case 4:
                     System.out.println("Has salido...");
                     break;
                 default:
-                    System.out.println("Opción no válida.");
+                    System.out.println("Número no válido. El número debe ser entre 1 y 4");
             }
         } while (opcion != 4);
     }
 
     public static void main(String[] args) {
-        NotasAlumnosV3 app = new NotasAlumnosV3();
+        NotasAlumnosExcepciones app = new NotasAlumnosExcepciones();
         app.mostrarMenu();
     }  
 }
