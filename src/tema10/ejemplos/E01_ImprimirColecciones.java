@@ -1,5 +1,7 @@
 
 package tema10.ejemplos;
+// COLECCIONES (LIST - SET - QUEUE(cola)
+
 
 // LIBRERIAS IMPORTADAS
 import java.util.ArrayList;
@@ -12,7 +14,7 @@ import java.util.Map;
  *
  * @author alumno
  */
-public class ImprimirColecciones {
+public class E01_ImprimirColecciones {
     // COLECCIONES
     static Collection rellenar(Collection c){ 
         c.add("perro");
@@ -39,7 +41,7 @@ public class ImprimirColecciones {
         
         // TAMAÑOS
         
-        
+        // CONCLUSIONES
         // HashSet. Contiene un conjunto de objetos, que le permite determinar más fácil y rápidamente si un objeto está en el conjunto o no.
         // HashMap. Se imprimen entre llaves con el signo = (clave=valor)
         // Listas. Se pueden crear elementos duplicados

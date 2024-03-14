@@ -10,14 +10,14 @@ import java.util.TreeSet;
  */
 public class Conjunto3TreeSet_LinkedHashSet {
     public static void main(String [] args){
-        TreeSet<Integer> A= new TreeSet<Integer>(); // ORDENADO
+        TreeSet<Integer> A= new TreeSet<Integer>(); // Los elementos del conjunto se almacenan de menor a mayor.
         A.add(9); 
         A.add(19); 
         A.add(5); 
         A.add(7); 
 
         
-        LinkedHashSet<Integer> B= new LinkedHashSet<Integer>();
+        LinkedHashSet<Integer> B= new LinkedHashSet<Integer>(); // Los elementos del conjunto se encuentran en el orden que se insertan, similar a una lista pero sin dejar ingresar valores repetido.
         B.add(10); 
         B.add(20); 
         B.add(5); 
@@ -42,11 +42,7 @@ public class Conjunto3TreeSet_LinkedHashSet {
         System.out.println("\nEliminar los elementos del conjunto A que puedan estar en el conjunto B.");
         A.removeAll(B);
         System.out.println("Conjunto A: " + A); // Conjunto A: [9, 19]
-        System.out.println("Conjunto B: " + B); // Conjunto B: [10, 20, 5, 7]
-        
-        
-        
-        
+        System.out.println("Conjunto B: " + B); // Conjunto B: [10, 20, 5, 7] 
     }
     
 }
