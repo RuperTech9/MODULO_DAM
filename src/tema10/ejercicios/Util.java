@@ -1,5 +1,5 @@
 
-package tema10.ejemplos;
+package tema10.ejercicios;
 
 /**
  *

@@ -14,7 +14,7 @@ import java.util.Map;
  *
  * @author alumno
  */
-public class E01_ImprimirColecciones {
+public class ImprimirColecciones {
     // COLECCIONES
     static Collection rellenar(Collection c){ 
         c.add("perro");
