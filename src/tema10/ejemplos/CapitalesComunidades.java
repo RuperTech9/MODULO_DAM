@@ -1,6 +1,5 @@
 
 package tema10.ejemplos;
-// COLECCIONES (LIST - SET - QUEUE(cola)
 
 import java.util.Map;
 
@@ -8,9 +7,9 @@ import java.util.Map;
  *
  * @author alumno
  */
-public class Mapas01 {
+public class CapitalesComunidades {
     public static void main(String[] args){
-        Map<Integer,String> mapaDAM1 = Map.of(1, "Teclado", 2, "Monitor", 3, "CPU");
+        Map<String,String> capitales = new <>();
         mapaDAM1.forEach((clave, valor) -> System.out.println((clave + ":" + valor)));
         
     }   

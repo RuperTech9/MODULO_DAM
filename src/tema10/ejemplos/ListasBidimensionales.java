@@ -32,10 +32,13 @@ public class ListasBidimensionales {
         System.out.println("Lista 2D inicializada con datos: " + lista01);
         
         // Para imprimir sin corchetes
+        System.out.println("Lista ordenada con for");
         for (ArrayList<Integer> list : lista01) {
             for (Integer i1 : list) {
                 System.out.printf("%s ",i1);
             }
         }
+        
+        // Coleccion de datos ordenado de Comunidades - capital
     }
 }
