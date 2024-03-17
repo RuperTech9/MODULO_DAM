@@ -1,7 +1,6 @@
 
-package tema10.ejemplos;
+package tema10.ejemplosMapas;
 
-import java.util.Comparator;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -9,8 +8,10 @@ import java.util.TreeMap;
  *
  * @author alumno
  */
-public class CapitalesComunidadesV2 {
-    static Map rellenar(Map capitales){ 
+public class CapitalesComunidadesV1 {
+    public static void main(String[] args){
+        Map<String,String> capitales = new TreeMap<String,String>();
+        
         capitales.put("Andalucía", "Sevilla");
         capitales.put("Aragón", "Zaragoza");
         capitales.put("Asturias", "Oviedo");
@@ -30,21 +31,7 @@ public class CapitalesComunidadesV2 {
         capitales.put("Navarra", "Pamplona");
         capitales.put("País Vasco", "Vitoria-Gasteiz");
         capitales.put("La Rioja", "Logroño");
-        return capitales;
-    }
-    
-    public static void main(String[] args) {
-         // Orden natural
-        Map<String, String> capitalesOrdenado = new TreeMap<>();
-        rellenar(capitalesOrdenado);
-        System.out.println("Orden natural:");
-        capitalesOrdenado.forEach((comunidad, capital) -> System.out.println(comunidad + ": " + capital));
         
-        // Orden inverso
-        Map<String, String> capitalesInvertido = new TreeMap<>(Comparator.reverseOrder()); // Al ser un par uso Comparator
-        rellenar(capitalesInvertido);
-        System.out.println("\nOrden inverso:");
-        capitalesInvertido.forEach((comunidad, capital) -> System.out.println(comunidad + ": " + capital));
-    }
-    
+        capitales.forEach((clave, valor) -> System.out.println((clave + ":" + valor)));
+    }   
 }
