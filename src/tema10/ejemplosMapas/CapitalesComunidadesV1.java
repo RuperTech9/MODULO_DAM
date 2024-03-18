@@ -1,6 +1,7 @@
 
 package tema10.ejemplosMapas;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -10,6 +11,7 @@ import java.util.TreeMap;
  */
 public class CapitalesComunidadesV1 {
     public static void main(String[] args){
+     // Map<String,String> capitales = new HashMap<String,String>();
         Map<String,String> capitales = new TreeMap<String,String>();
         
         capitales.put("Andalucía", "Sevilla");

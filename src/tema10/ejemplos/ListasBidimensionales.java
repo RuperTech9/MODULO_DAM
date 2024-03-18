@@ -2,7 +2,6 @@
 package tema10.ejemplos;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 
 /**
@@ -38,7 +37,5 @@ public class ListasBidimensionales {
                 System.out.printf("%s ",i1);
             }
         }
-        
-        // Coleccion de datos ordenado de Comunidades - capital
     }
 }
