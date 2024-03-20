@@ -11,7 +11,7 @@ import java.util.Scanner;
  */
 public class AlumnoListado {
     static Scanner sc = new Scanner(System.in);
-    static List<Alumno> alumnos = new ArrayList<>();
+    static ArrayList<Alumno> alumnos = new ArrayList<>();
 
     private static void añadirAlumno() {
         if (alumnos.size() < 30) {

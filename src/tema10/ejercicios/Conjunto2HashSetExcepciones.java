@@ -8,7 +8,7 @@ import java.util.Scanner;
  *
  * @author Ruper
  */
-public class Conjunto2HashSet {
+public class Conjunto2HashSetExcepciones {
     public static void main(String [] args){
         // CONJUNTO: Los conjuntos son un tipo de colección que no admite duplicados
         // CLASE GENERICA <Tipo> puede trabajar con cualquier tipo de dato 
