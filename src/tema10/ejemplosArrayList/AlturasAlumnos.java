@@ -9,34 +9,22 @@ import java.util.Scanner;
  * @author alumno
  */
 public class AlturasAlumnos {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-
-        // Pedir el número de alumnos
-        int numAlumnos = numeroAlumnos(scanner);
-
-        // Leer las alturas de los alumnos
-        ArrayList<Double> alturas = leerAlturas(scanner, numAlumnos);
-
-        // Calcular la media de las alturas
-        double media = calcularMedia(alturas);
-
-        // Mostrar las alturas y los resultados
-        mostrarResultados(alturas, media);
-    }
+    // OBJETO Scanner
+    static Scanner sc = new Scanner(System.in);
 
     // Método para pedir el número de alumnos
-    public static int numeroAlumnos(Scanner scanner) {
+    public static int numeroAlumnos() {
         System.out.print("Ingrese el número de alumnos: ");
-        return scanner.nextInt();
+        int numero = sc.nextInt();
+        return numero;
     }
 
     // Método para leer las alturas de los alumnos
-    public static ArrayList<Double> leerAlturas(Scanner scanner, int numAlumnos) {
+    public static ArrayList<Double> leerAlturas(int numAlumnos) {
         ArrayList<Double> alturas = new ArrayList<>();
         for (int i = 0; i < numAlumnos; i++) {
             System.out.print("Ingrese la altura del alumno " + (i + 1) + ": ");
-            double altura = scanner.nextDouble();
+            double altura = sc.nextDouble();
             alturas.add(altura);
         }
         return alturas;
@@ -70,6 +58,17 @@ public class AlturasAlumnos {
         }
         System.out.println("\nNúmero de alumnos más altos que la media: " + masAltos);
         System.out.println("Número de alumnos más bajos que la media: " + masBajos);
+    }
+    
+    public static void main(String[] args) {
+        // Pedir el número de alumnos
+        int numAlumnos = numeroAlumnos();
+        // Leer las alturas de los alumnos
+        ArrayList<Double> alturas = leerAlturas(numAlumnos);
+        // Calcular la media de las alturas
+        double media = calcularMedia(alturas);
+        // Mostrar las alturas y los resultados
+        mostrarResultados(alturas, media);
     }
 }
 
