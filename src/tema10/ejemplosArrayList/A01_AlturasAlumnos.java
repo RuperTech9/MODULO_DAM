@@ -8,7 +8,7 @@ import java.util.Scanner;
  *
  * @author alumno
  */
-public class AlturasAlumnos {
+public class A01_AlturasAlumnos {
     // OBJETO Scanner
     static Scanner sc = new Scanner(System.in);
     

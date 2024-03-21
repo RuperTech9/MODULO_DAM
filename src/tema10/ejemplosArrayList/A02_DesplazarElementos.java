@@ -14,7 +14,7 @@ import java.util.ArrayList;
  * 
  * @author alumno
  */
-public class DesplazarElementos {
+public class A02_DesplazarElementos {
     public static void main(String[] args) {
         // Crear el ArrayList inicial
         ArrayList<Integer> numeros = new ArrayList<>();
