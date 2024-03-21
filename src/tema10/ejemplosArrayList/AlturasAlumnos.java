@@ -11,14 +11,23 @@ import java.util.Scanner;
 public class AlturasAlumnos {
     // OBJETO Scanner
     static Scanner sc = new Scanner(System.in);
-
+    
+    /*
+    Método numeroAlumnos(): este método pide por teclado el número de
+    alumnos de la clase y devuelve dicho número al programa principal.
+    */
     // Método para pedir el número de alumnos
     public static int numeroAlumnos() {
         System.out.print("Ingrese el número de alumnos: ");
         int numero = sc.nextInt();
         return numero;
     }
-
+    
+    /*
+    Método leerAlturas(): pide por teclado las alturas de los N alumnos y las
+    almacena en el ArrayList. Este método recibe como parámetros el ArrayList
+    inicialmente vacío y el número de alumnos a leer.
+    */
     // Método para leer las alturas de los alumnos
     public static ArrayList<Double> leerAlturas(int numAlumnos) {
         ArrayList<Double> alturas = new ArrayList<>();
@@ -29,7 +38,12 @@ public class AlturasAlumnos {
         }
         return alturas;
     }
-
+    
+    /*
+    Método calcularMedias(): calcula y devuelve la media de los alumnos de la
+    clase. Este método recibe como parámetro el ArrayList con las alturas de todos
+    los alumnos.
+    */
     // Método para calcular la media de las alturas
     public static double calcularMedia(ArrayList<Double> alturas) {
         double suma = 0;
@@ -38,17 +52,22 @@ public class AlturasAlumnos {
         }
         return suma / alturas.size();
     }
-
+    
+    /*
+    Método mostrarResultados(): muestra por pantalla todas las alturas y
+    calcula y muestra el número de alumnos con altura superior e inferior a la
+    media. Recibe como parámetros el ArrayList con las alturas de todos los
+    alumnos y la media calculada anteriormente.
+    */
+    
     // Método para mostrar las alturas y los resultados
     public static void mostrarResultados(ArrayList<Double> alturas, double media) {
         System.out.println("\nAlturas de los alumnos:");
         for (int i = 0; i < alturas.size(); i++) {
             System.out.println("Alumno " + (i + 1) + ": " + alturas.get(i));
         }
-
         int masAltos = 0;
         int masBajos = 0;
-
         for (double altura : alturas) {
             if (altura > media) {
                 masAltos++;
@@ -71,7 +90,6 @@ public class AlturasAlumnos {
         mostrarResultados(alturas, media);
     }
 }
-
 /*
 Este programa solicita al usuario el número de alumnos, luego lee las alturas de los alumnos y las almacena en un ArrayList. 
 Después calcula la media de las alturas y muestra cuántos alumnos tienen una altura superior e inferior a la media.

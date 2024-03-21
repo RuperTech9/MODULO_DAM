@@ -33,6 +33,10 @@ public class DesplazarElementos {
             System.out.print(numero + " ");
         }
     }
+    
+    public static void desplazar(ArrayList<Integer> n){
+        n.add(0,n.remove(n.size()- 1));
+    }
 }
 /*
  * Primero creamos un ArrayList de tipo Integer con los números dados. 
