@@ -2,7 +2,7 @@
 package tema10.ejemplosArrayList;
 
 /**
- *
+ * para ordenar un Comparator y para recorrer un iterator
  * @author Ruper
  */
 public class Alumno_V2 {

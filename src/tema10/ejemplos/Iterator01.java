@@ -84,12 +84,6 @@ public class Iterator01 {
         List<String> ejemplo1 = Collections.nCopies(5, "Hola");
         System.out.println("Lista repetida" + ejemplo1);
 
-        
-        
-        
-        
-        
-        
         // BORRAR ELEMENTO DE LA LISTA por indice
         listaDAM3.remove(1);
         System.out.println(listaDAM3);
@@ -107,8 +101,6 @@ public class Iterator01 {
         
         // TAMAÑO
         System.out.println("Tamaño actual: " + listaDAM3.size());
-        
-        
-        
+
     }
 }
