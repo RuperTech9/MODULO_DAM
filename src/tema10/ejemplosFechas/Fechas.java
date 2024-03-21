@@ -10,12 +10,12 @@ import java.util.Calendar;
  */
 public class Fechas {
     public static void main(String[] args) {
-        Calendar today = Calendar.getInstance();
+        Calendar hoy = Calendar.getInstance();
         // Devuelve la fecha actual
-        System.out.println("Hoy es: "+today.getTime());
+        System.out.println("Hoy es: "+hoy.getTime());
         
         // Time
-        LocalDate fechaNacimiento  = LocalDate.parse("2009-03-01");
+        LocalDate fechaNacimiento  = LocalDate.parse("2009/03-01");
         System.out.println("Formato Java.Time: "+fechaNacimiento);
                   
     }//Fin main         
