@@ -90,3 +90,15 @@ public class ESTRUCTURA_CODIGO_2 {
         }
     }
 }
+
+/*
+Separación de Responsabilidades: Divide el código en métodos más pequeños y cohesivos para mejorar la legibilidad y la mantenibilidad del código.
+
+Uso de Constantes: Si el menú no cambia, considera definirlo como una constante en lugar de una cadena de texto en el método. Esto facilita la modificación del menú en el futuro.
+
+Documentación Javadoc: Agrega comentarios Javadoc descriptivos para cada método y clase para facilitar la comprensión del código.
+
+Cierre del Scanner: Cierra el objeto Scanner al finalizar su uso para liberar recursos.
+
+Control de Flujo Mejorado: Utiliza un bucle while para manejar la entrada del usuario de manera más eficiente y reducir la complejidad del código.
+*/
