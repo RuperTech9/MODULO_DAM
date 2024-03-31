@@ -1,17 +1,19 @@
 
-package tema10.ejemplosArrayList;
+package tema10.tarea;
 
 import java.time.LocalDate;
 import java.util.Scanner;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.Iterator;
 
 /**
  *
  * @author Ruper
  */
-public class A03_EmpleadosEmpresa {
+public class EmpleadosEmpresa {
     static Scanner sc = new Scanner(System.in);
-    static ArrayList<A03_Empleado> empleados = new ArrayList<>();
+    static ArrayList<Empleado> empleados = new ArrayList<>();
     
     private static void añadirEmpleado() {
         System.out.print("Introduce el nombre del empleado: ");
@@ -26,9 +28,9 @@ public class A03_EmpleadosEmpresa {
         String puesto = sc.nextLine();
         System.out.print("Introduce el salario del empleado: ");
         double salario = sc.nextDouble();
-        sc.nextLine(); // Consumir el salto de línea pendiente
+        sc.nextLine(); // Consumo el salto de línea pendiente
     
-        empleados.add(new A03_Empleado(nombre, apellidos, fechaNacimiento, fechaIngreso, puesto, salario));
+        empleados.add(new Empleado(nombre, apellidos, fechaNacimiento, fechaIngreso, puesto, salario));
         System.out.println(nombre + " ha sido añadido a la lista.");
     }
     
@@ -38,9 +40,9 @@ public class A03_EmpleadosEmpresa {
     
         // Iterar sobre la lista de empleados y eliminar el empleado con el nombre especificado
         boolean encontrado = false;
-        Iterator<A03_Empleado> iterator = empleados.iterator();
+        Iterator<Empleado> iterator = empleados.iterator();
         while (iterator.hasNext()) {
-            A03_Empleado empleado = iterator.next();
+            Empleado empleado = iterator.next();
             if (empleado.getNombre().equalsIgnoreCase(nombre)) {
                 iterator.remove();
                 encontrado = true;
@@ -60,7 +62,7 @@ public class A03_EmpleadosEmpresa {
     
         // Iterar sobre la lista de empleados y mostrar los datos del empleado con el nombre especificado
         boolean encontrado = false;
-        for (A03_Empleado empleado : empleados) {
+        for (Empleado empleado : empleados) {
             if (empleado.getNombre().equalsIgnoreCase(nombre)) {
                 System.out.println(empleado);
                 encontrado = true;
@@ -74,7 +76,7 @@ public class A03_EmpleadosEmpresa {
 
     private static void imprimirEmpleadosOrdenadosPorAntigüedad() {
         // Ordenar la lista de empleados por fecha de ingreso
-        empleados.sort(Comparator.comparing(A03_Empleado::getFechaDeIngreso));
+        empleados.sort(Comparator.comparing(Empleado::getFechaIngreso));
         
         // Imprimir los empleados ordenados
         for (int i = 0; i < empleados.size(); i++) {
@@ -84,8 +86,8 @@ public class A03_EmpleadosEmpresa {
     
     private static void imprimirEmpleadosOrdenadosPorSalario() {
         // Ordenar la lista de empleados por salario (de mayor a menor)
-        empleados.sort(Comparator.comparingDouble(A03_Empleado::getSalario).reversed());
-    
+        empleados.sort(Comparator.comparingDouble(Empleado::getSalario).reversed());
+        
         // Imprimir los empleados ordenados
         for (int i = 0; i < empleados.size(); i++) {
             System.out.println((i + 1) + "- " + empleados.get(i));
@@ -94,7 +96,7 @@ public class A03_EmpleadosEmpresa {
 
     private static void imprimirEmpleadosOrdenadosPorApellido() {
         // Ordenar la lista de empleados por apellido
-        empleados.sort(Comparator.comparing(A03_Empleado::getApellidos));
+        empleados.sort(Comparator.comparing(Empleado::getApellidos));
     
         // Imprimir los empleados ordenados
         for (int i = 0; i < empleados.size(); i++) {
@@ -104,7 +106,7 @@ public class A03_EmpleadosEmpresa {
 
     private static void calcularGastoTotal() {
         // Calcular el gasto total sumando los salarios de todos los empleados
-        double gastoTotal = empleados.stream().mapToDouble(A03_Empleado::getSalario).sum();
+        double gastoTotal = empleados.stream().mapToDouble(Empleado::getSalario).sum();
         System.out.println("El gasto total en salarios de los empleados es: " + gastoTotal);
     }
     
@@ -114,6 +116,7 @@ public class A03_EmpleadosEmpresa {
         int opcion;
         do {
             System.out.println("\nGESTIÓN DE EMPLEADOS");
+            System.out.println("--------------------");
             System.out.println("1- Añadir Empleado");
             System.out.println("2- Eliminar Empleado");
             System.out.println("3- Buscar Empleado");
@@ -123,7 +126,7 @@ public class A03_EmpleadosEmpresa {
             System.out.println("   c) Por apellido");
             System.out.println("5- Calcular gasto total de los empleados");
             System.out.println("6- Salir");
-            System.out.print("Elija una opción: ");
+            System.out.print("\nElija una opción: ");
             
             opcion = sc.nextInt();
             sc.nextLine(); // Salto de línea después de leer un número.
@@ -157,7 +160,7 @@ public class A03_EmpleadosEmpresa {
                         default:
                             System.out.println("Opción no válida.");
                             break;
-                    } // FIN SWITCH INTERNO
+                    }
                     break;
                 case 5:
                     calcularGastoTotal();
@@ -174,24 +177,24 @@ public class A03_EmpleadosEmpresa {
     
     public static void main(String[] args){
         // objeto A03_EmpleadosEmpresa
-        A03_EmpleadosEmpresa empresa = new A03_EmpleadosEmpresa();
+        EmpleadosEmpresa empresa = new EmpleadosEmpresa();
        
         // Agregar empleados por defecto
         LocalDate fechaNacimientoJuan = LocalDate.parse("1960-01-01");
         LocalDate fechaIngresoJuan = LocalDate.parse("1980-05-24");
-        empresa.empleados.add(new A03_Empleado("Juan", "Torres", fechaNacimientoJuan, fechaIngresoJuan, "Jefe", 60000.0));
+        empresa.empleados.add(new Empleado("Juan", "Torres", fechaNacimientoJuan, fechaIngresoJuan, "Jefe", 60000.0));
         
         LocalDate fechaNacimientoSara = LocalDate.parse("1980-05-02");
         LocalDate fechaIngresoSara = LocalDate.parse("1999-06-03");
-        empresa.empleados.add(new A03_Empleado("Sara", "Gonzalez", fechaNacimientoSara, fechaIngresoSara, "Secretaria", 25000.0));
+        empresa.empleados.add(new Empleado("Sara", "Gonzalez", fechaNacimientoSara, fechaIngresoSara, "Secretaria", 25000.0));
         
         LocalDate fechaNacimientoElena = LocalDate.parse("1990-09-03");
         LocalDate fechaIngresoElena = LocalDate.parse("2010-11-02");
-        empresa.empleados.add(new A03_Empleado("Elena", "Sanchez", fechaNacimientoElena, fechaIngresoElena, "TecnicoFP", 30000.0));
+        empresa.empleados.add(new Empleado("Elena", "Sanchez", fechaNacimientoElena, fechaIngresoElena, "TecnicoFP", 30000.0));
         
         LocalDate fechaNacimientoPepe = LocalDate.parse("1991-10-04");
         LocalDate fechaIngresoPepe = LocalDate.parse("2015-10-01");
-        empresa.empleados.add(new A03_Empleado("Pepe", "Uriel", fechaNacimientoPepe, fechaIngresoPepe, "Administrativo", 24000.0));
+        empresa.empleados.add(new Empleado("Pepe", "Uriel", fechaNacimientoPepe, fechaIngresoPepe, "Administrativo", 24000.0));
     
         empresa.mostrarMenu();
     }
