@@ -1,10 +1,9 @@
 
 package tema10.tareaExcepciones;
 
-import java.time.LocalDate;
-
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.time.LocalDate;
 import java.util.Iterator;
 import java.util.Comparator;
 import java.time.format.DateTimeParseException;
@@ -20,7 +19,7 @@ public class EmpleadosEmpresa {
     
     private static void añadirEmpleado() {
         // NOMBRE
-        System.out.print("Introduce el nombre del empleado: ");
+        System.out.print("\nIntroduce el nombre del empleado: ");
         String nombre = sc.nextLine();
         
         // APELLIDOS
@@ -45,7 +44,12 @@ public class EmpleadosEmpresa {
             System.out.print("Introduce la fecha de ingreso del empleado (YYYY-MM-DD): ");
             try {
                 fechaIngreso = LocalDate.parse(sc.nextLine());
-                break; // Salgo si la fecha es correcta
+                if (fechaIngreso != null && fechaNacimiento != null && fechaIngreso.isBefore(fechaNacimiento)) { // Verifico que la fecha de ingreso no sea anterior a la fecha de nacimiento
+                    System.out.println("La fecha de ingreso no puede ser anterior a la fecha de nacimiento. Por favor, introduce una fecha válida.");
+                    fechaIngreso = null; // Restablezco la fechaIngreso para repetir el bucle
+                } else {
+                    break; // Salgo si la fecha es correcta
+                }
             } catch (DateTimeParseException e) {
                 System.out.println("Error. Introduce el formato correcto YYYY-MM-DD.");
             } // FIN TRY-CATCH
@@ -79,7 +83,7 @@ public class EmpleadosEmpresa {
     
     // METODO que elimina un empleado por nombre usando ITERATOR
     private static void eliminarEmpleado() {
-        System.out.print("Introduce el nombre del empleado a eliminar: ");
+        System.out.print("\nIntroduce el nombre del empleado a eliminar: ");
         String nombre = sc.nextLine();
         
         boolean encontrado = false; // Inicializo variable.
@@ -102,7 +106,7 @@ public class EmpleadosEmpresa {
     
     // METODO que busca un empleado por nombre
     private static void buscarEmpleado() {
-        System.out.print("Introduce el nombre del empleado a buscar: ");
+        System.out.print("\nIntroduce el nombre del empleado a buscar: ");
         String nombre = sc.nextLine();
     
         boolean encontrado = false; // Inicializo variable.
@@ -114,7 +118,7 @@ public class EmpleadosEmpresa {
             } // FIN IF
         } // FIN FOR
         if (!encontrado) {
-            System.out.println("No se encontró ningún empleado con ese nombre.");
+            System.out.println("\nNo se encontró ningún empleado con ese nombre.");
         } // FIN IF
     }
     
@@ -156,14 +160,14 @@ public class EmpleadosEmpresa {
         for (Empleado empleado : empleados) {
             gastoTotal += empleado.getSalario(); // Sumo el salario del empleado actual al total.
         } // FIN FOR
-        System.out.println("El gasto total en salarios de los empleados es: " + gastoTotal);
+        System.out.println("\nEl gasto total en salarios de los empleados es: " + gastoTotal);
     }
     
     
     // METODO para mostrar el menú
     public void mostrarMenu() {
         String menu = "\nGESTIÓN DE EMPLEADOS" +
-                      "--------------------" +
+                      "\n--------------------" +
                       "\nOpciones:" +
                       "\n1- Añadir Empleado" +
                       "\n2- Eliminar Empleado" +
@@ -176,20 +180,12 @@ public class EmpleadosEmpresa {
                       "\n6- Salir";
         
         int opcion = 0;
-        do {
-            System.out.println(menu);
-            System.out.print("Selecciona una opción: ");
-            while (true) {
-                try {
-                    opcion = sc.nextInt();
-                    break;
-                } catch (InputMismatchException e) {
-                    System.out.println("ERROR. Introduce un número válido.");
-                    sc.next();
-                    System.out.print("Selecciona una opción: ");
-                }
-            }
+        do {     
             try {
+                System.out.println(menu);
+                System.out.print("\nSelecciona una opción: ");
+                opcion = sc.nextInt();
+                sc.nextLine(); // Salto de línea.
                 switch (opcion) {
                     case 1:
                         añadirEmpleado();
@@ -201,7 +197,6 @@ public class EmpleadosEmpresa {
                         buscarEmpleado();
                         break;
                     case 4:
-                        sc.nextLine(); // Consumir el salto de línea pendiente después de nextInt()
                         System.out.print("Elige una opción (a, b o c): ");
                         char opcionOrdenamiento = sc.nextLine().charAt(0);
                         switch (opcionOrdenamiento) {
@@ -218,7 +213,7 @@ public class EmpleadosEmpresa {
                                 imprimirEmpleadosOrdenadosPorApellido();
                                 break;
                             default:
-                                System.out.println("Opción no válida.");
+                                System.out.println("\nOpción no válida.");
                                 break;
                         }
                         break;
@@ -226,10 +221,10 @@ public class EmpleadosEmpresa {
                         calcularGastoTotal();
                         break;
                     case 6:
-                        System.out.println("Saliendo...");
+                        System.out.println("\nSaliendo...");
                         break;
                     default:
-                        System.out.println("Opción no válida. Introduce un número entre 1 y 6.");
+                        System.out.println("\nOpción no válida. Introduce un número entre 1 y 6.");
                         break;
                 } // FIN SWITCH
             } catch (InputMismatchException e) {
