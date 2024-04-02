@@ -46,9 +46,18 @@ public class Empleado {
         return salario;
     }
     
-    // SETTERS para poder cambiar los valores de un empleado una vez creado.
-    public void setFechaDeIngreso(LocalDate FechaDeIngreso) {
-        this.fechaIngreso = FechaDeIngreso;
+    // SETTERS
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+    public void setApellidos(String apellidos) {
+        this.apellidos = apellidos;
+    }
+    public void setFechaNacimiento(LocalDate fechaNacimiento) {    
+        this.fechaNacimiento = fechaNacimiento;
+    }
+    public void setFechaIngreso(LocalDate fechaIngreso) {
+        this.fechaIngreso = fechaIngreso;
     }
     public void setPuesto(String puesto) {
         this.puesto = puesto;
@@ -60,11 +69,11 @@ public class Empleado {
     // METODO toString
     @Override
     public String toString() {
-        return "Nombre: " + nombre +
-           " || Apellidos: " + apellidos +
-           " || Fecha Nacimiento: " + fechaNacimiento +
-           " || Fecha de Ingreso: " + fechaIngreso +
-           " || Puesto: " + puesto +
-           " || Salario: " + salario;
+        return nombre +
+           " " + apellidos +
+           "    FECHA NACIMIENTO: " + fechaNacimiento +
+           "    FECHA INGRESO: " + fechaIngreso +
+           "    PUESTO: " + puesto +
+           "    SALARIO: " + salario;
     }
 }

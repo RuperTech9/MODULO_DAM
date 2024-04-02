@@ -13,7 +13,7 @@ import java.util.InputMismatchException;
  *
  * @author Ruper
  */
-public class EmpleadosEmpresa {
+public class EmpleadosEmpresaV3 {
     static Scanner sc = new Scanner(System.in);
     static ArrayList<Empleado> empleados = new ArrayList<>(); // ArrayList de Objetos
     
@@ -235,8 +235,8 @@ public class EmpleadosEmpresa {
     } // FIN METODO
     
     public static void main(String[] args){
-        // Objeto EmpleadosEmpresa
-        EmpleadosEmpresa empresa = new EmpleadosEmpresa();
+        // Objeto EmpleadosEmpresaV3
+        EmpleadosEmpresaV3 empresa = new EmpleadosEmpresaV3();
        
         // Empleados por defecto
         LocalDate fechaNacimientoJuan = LocalDate.parse("1960-01-01");

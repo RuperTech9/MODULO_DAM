@@ -1,5 +1,5 @@
 
-package tema10.tarea;
+package tema10.tareaExcepciones;
 
 import java.util.ArrayList;
 import java.time.LocalDate;
@@ -13,11 +13,9 @@ import javax.swing.JOptionPane;
  *
  * @author Ruper
  */
-public class EmpleadosEmpresa {
-    // ArrayList de Objetos
-    static ArrayList<Empleado> empleados = new ArrayList<>();
+public class EmpleadosEmpresaV4 {
+    static ArrayList<Empleado> empleados = new ArrayList<>(); // ArrayList de Objetos
     
-    // METODO para añadir un empleado.
     private static void añadirEmpleado() {
         // NOMBRE Y APELLIDOS
         String nombre = JOptionPane.showInputDialog("Introduce el nombre del empleado:");
@@ -34,7 +32,7 @@ public class EmpleadosEmpresa {
                 fechaNacimiento = LocalDate.parse(strFechaNacimiento);
                 break; // Salgo si la fecha es correcta
             } catch (DateTimeParseException e) {
-                JOptionPane.showMessageDialog(null, "ERROR. Introduce el formato correcto YYYY-MM-DD.");
+                JOptionPane.showMessageDialog(null, "Error. Introduce el formato correcto YYYY-MM-DD.");
             } // FIN TRY-CATCH
         } while (fechaNacimiento == null); // FIN DO-WHILE
         
@@ -52,7 +50,7 @@ public class EmpleadosEmpresa {
                     break; // Salgo si la fecha es correcta
                 }
             } catch (DateTimeParseException e) {
-                JOptionPane.showMessageDialog(null, "ERROR. Introduce el formato correcto YYYY-MM-DD.");
+                JOptionPane.showMessageDialog(null, "Error. Introduce el formato correcto YYYY-MM-DD.");
             } // FIN TRY-CATCH
         } while (fechaIngreso == null); // FIN DO-WHILE
         
@@ -71,7 +69,7 @@ public class EmpleadosEmpresa {
                     JOptionPane.showMessageDialog(null, "El salario debe ser mayor que 0. Intentalo de nuevo.");
                 } // FIN IF
             } catch (InputMismatchException e) {
-                JOptionPane.showMessageDialog(null, "ERROR. Se esperaba un número para el salario. Intentalo de nuevo.");
+                JOptionPane.showMessageDialog(null, "Error. Se esperaba un número para el salario. Intentalo de nuevo.");
             } // FIN TRY-CATCH
         } while (true); // FIN DO-WHILE
         
@@ -80,7 +78,7 @@ public class EmpleadosEmpresa {
  
     }
     
-    // METODO que elimina un empleado por nombre y apellidos
+    // METODO que elimina un empleado por nombre
     private static void eliminarEmpleado() {
         String nombre = JOptionPane.showInputDialog("Introduce el nombre del empleado a eliminar:");
         if (nombre == null) return; // Salgo del método si presiono cancelar
@@ -106,7 +104,7 @@ public class EmpleadosEmpresa {
         } // FIN IF
     } // FIN METODO
     
-    // METODO que busca un empleado por nombre y apellidos
+    // METODO que busca un empleado por nombre
     private static void buscarEmpleado() {
         String nombre = JOptionPane.showInputDialog("Introduce el nombre del empleado:");
         String apellido = JOptionPane.showInputDialog("Introduce el apellido del empleado:");
@@ -167,7 +165,7 @@ public class EmpleadosEmpresa {
     
         // Imprimo los empleados ya ordenados
         Iterator<Empleado> itApellido = empleados.iterator();
-        String ordenApellidos = "Empleados ordenados por apellido:\n\n";
+        String ordenApellidos = "Empleados ordenados por salario:\n\n";
         int contador = 1; // Variable para enumerar los empleados
         while (itApellido.hasNext()) {
             Empleado empleado = itApellido.next();
@@ -241,7 +239,7 @@ public class EmpleadosEmpresa {
                                             "a) Por antigüedad\n" +
                                             "b) Por salario\n" +
                                             "c) Por apellido\n" +
-                                            "s) Volver al menú principal";
+                                            "S) Volver al menú principal";
                             String opcionOrdenamiento = JOptionPane.showInputDialog(subMenu);
                             
                             // Si presiono cancelar o elijo 's', rompo el bucle y vuelvo al menú principal.
@@ -262,7 +260,7 @@ public class EmpleadosEmpresa {
                                     JOptionPane.showMessageDialog(null, "Opción no válida. Introduce una opción válida o 's' para volver.");
                                     continue; // Continúa el bucle si no elijo una opción válida.
                             } // FIN SWITCH
-                            
+                            break; // Opción válida salgo del bucle.
                         } while (true); // FIN DO-WHILE
                         break;
                     case 5:
@@ -280,4 +278,31 @@ public class EmpleadosEmpresa {
             } // FIN TRY-CATCH
         } while (opcion != 6); // FIN DO-WHILE
     } // FIN METODO
+    
+    public static void main(String[] args){
+        // Objeto EmpleadosEmpresa
+        EmpleadosEmpresaV4 empresa = new EmpleadosEmpresaV4();
+       
+        // EMPLEADO 1
+        LocalDate fechaNacimientoJuan = LocalDate.parse("1960-01-01");
+        LocalDate fechaIngresoJuan = LocalDate.parse("1980-05-24");
+        empresa.empleados.add(new Empleado("Juan", "Torres", fechaNacimientoJuan, fechaIngresoJuan, "Jefe", 60000.0));
+        
+        // EMPLEADO 2
+        LocalDate fechaNacimientoSara = LocalDate.parse("1980-05-02");
+        LocalDate fechaIngresoSara = LocalDate.parse("1999-06-03");
+        empresa.empleados.add(new Empleado("Sara", "Gonzalez", fechaNacimientoSara, fechaIngresoSara, "Secretaria", 25000.0));
+        
+        // EMPLEADO 3
+        LocalDate fechaNacimientoElena = LocalDate.parse("1990-09-03");
+        LocalDate fechaIngresoElena = LocalDate.parse("2010-11-02");
+        empresa.empleados.add(new Empleado("Elena", "Sanchez", fechaNacimientoElena, fechaIngresoElena, "TecnicoFP", 30000.0));
+        
+        // EMPLEADO 4
+        LocalDate fechaNacimientoPepe = LocalDate.parse("1991-10-04");
+        LocalDate fechaIngresoPepe = LocalDate.parse("2015-10-01");
+        empresa.empleados.add(new Empleado("Pepe", "Uriel", fechaNacimientoPepe, fechaIngresoPepe, "Administrativo", 24000.0));
+    
+        empresa.mostrarMenu();
+    } // FIN MAIN
 } // FIN CLASE
