@@ -30,7 +30,6 @@ public class Test {
             }
         }catch (FileNotFoundException e) {
             e.printStackTrace();
-            System.out.println("No se ha encontrado el archivo");
         }catch (Exception e1){
             e1.printStackTrace();
         }finally{
