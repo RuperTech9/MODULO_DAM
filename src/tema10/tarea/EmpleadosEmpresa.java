@@ -3,6 +3,7 @@ package tema10.tarea;
 
 import java.util.ArrayList;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Iterator;
 import java.util.Comparator;
 import java.time.format.DateTimeParseException;
@@ -28,23 +29,25 @@ public class EmpleadosEmpresa {
         // FECHA DE NACIMIENTO
         LocalDate fechaNacimiento = null; // Inicializo variable
         do {
-            String strFechaNacimiento = JOptionPane.showInputDialog("Introduce la fecha de nacimiento del empleado (YYYY-MM-DD):");
+            String strFechaNacimiento = JOptionPane.showInputDialog("Introduce la fecha de nacimiento del empleado (DD/MM/YYYY):");
             if (strFechaNacimiento == null) return; // Sale del método si se presiona cancelar
             try {
-                fechaNacimiento = LocalDate.parse(strFechaNacimiento);
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy"); // Cambio el formato de la fecha.
+                fechaNacimiento = LocalDate.parse(strFechaNacimiento, formatter);
                 break; // Salgo si la fecha es correcta
             } catch (DateTimeParseException e) {
-                JOptionPane.showMessageDialog(null, "ERROR. Introduce el formato correcto YYYY-MM-DD.");
+                JOptionPane.showMessageDialog(null, "ERROR. Introduce el formato correcto DD/MM/YYYY.");
             } // FIN TRY-CATCH
         } while (fechaNacimiento == null); // FIN DO-WHILE
         
         // FECHA DE INGRESO
         LocalDate fechaIngreso = null; // Inicializo variable
         do {
-            String strFechaIngreso = JOptionPane.showInputDialog("Introduce la fecha de ingreso del empleado (YYYY-MM-DD):");
+            String strFechaIngreso = JOptionPane.showInputDialog("Introduce la fecha de ingreso del empleado (DD/MM/YYYY):");
             if (strFechaIngreso == null) return;
             try {
-                fechaIngreso = LocalDate.parse(strFechaIngreso);
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy"); // Cambio el formato de la fecha.
+                fechaIngreso = LocalDate.parse(strFechaIngreso, formatter);
                 if (fechaIngreso != null && fechaNacimiento != null && fechaIngreso.isBefore(fechaNacimiento)) { // Verifico que la fecha de ingreso no sea anterior a la fecha de nacimiento
                     JOptionPane.showMessageDialog(null, "La fecha de ingreso no puede ser anterior a la fecha de nacimiento. Por favor, introduce una fecha válida.");
                     fechaIngreso = null; // Restablezco la fechaIngreso para repetir el bucle
@@ -52,7 +55,7 @@ public class EmpleadosEmpresa {
                     break; // Salgo si la fecha es correcta
                 }
             } catch (DateTimeParseException e) {
-                JOptionPane.showMessageDialog(null, "ERROR. Introduce el formato correcto YYYY-MM-DD.");
+                JOptionPane.showMessageDialog(null, "ERROR. Introduce el formato correcto DD/MM/YYYYD.");
             } // FIN TRY-CATCH
         } while (fechaIngreso == null); // FIN DO-WHILE
         
@@ -76,7 +79,7 @@ public class EmpleadosEmpresa {
         } while (true); // FIN DO-WHILE
         
         empleados.add(new Empleado(nombre, apellidos, fechaNacimiento, fechaIngreso, puesto, salario));
-        JOptionPane.showMessageDialog(null, nombre + " ha sido añadido a la lista.");
+        JOptionPane.showMessageDialog(null, "El empleado " + nombre + " ha sido añadido a la lista.");
  
     }
     
@@ -100,7 +103,7 @@ public class EmpleadosEmpresa {
             } // FIN IF
         }
         if (encontrado) {
-            JOptionPane.showMessageDialog(null, nombre + " ha sido eliminado de la lista.");
+            JOptionPane.showMessageDialog(null, "El empleado " + nombre + " ha sido eliminado de la lista.");
         } else {
             JOptionPane.showMessageDialog(null, "No se encontró ningún empleado con ese nombre.");
         } // FIN IF
@@ -135,12 +138,12 @@ public class EmpleadosEmpresa {
         
         // Imprimo los empleados ya ordenados.
         Iterator<Empleado> itAntiguos = empleados.iterator();
-        String ordenAntiguos = "Empleados ordenados por antigüedad:\n\n";
-        int contador = 1; // Variable para enumerar los empleados
+        String ordenAntiguos = "EMPLEADOS ORDENADOS POR ANTIGÜEDAD:\n\n";
+        int contador = 1; // Para numerar los empleados.
         while (itAntiguos.hasNext()) {
             Empleado empleado = itAntiguos.next();
             ordenAntiguos += contador + "- " + empleado.toString() + "\n";
-            contador++; // Incremento el contador para el siguiente empleado
+            contador++; // Para el siguiente empleado.
         }
         JOptionPane.showMessageDialog(null, ordenAntiguos);
     } // FIN METODO
@@ -151,12 +154,12 @@ public class EmpleadosEmpresa {
         
         // Imprimo los empleados ya ordenados
         Iterator<Empleado> itSalario = empleados.iterator();
-        String ordenSalario = "Empleados ordenados por salario:\n\n";
-        int contador = 1; // Variable para enumerar los empleados
+        String ordenSalario = "EMPLEADOS ORDENADOS POR SALARIO:\n\n";
+        int contador = 1; // Para numerar los empleados.
         while (itSalario.hasNext()) {
             Empleado empleado = itSalario.next();
             ordenSalario += contador + "- " + empleado.toString() + "\n";
-            contador++; // Incremento el contador para el siguiente empleado
+            contador++; // Para el siguiente empleado.
         }
         JOptionPane.showMessageDialog(null, ordenSalario);
     } // FIN METODO
@@ -167,17 +170,17 @@ public class EmpleadosEmpresa {
     
         // Imprimo los empleados ya ordenados
         Iterator<Empleado> itApellido = empleados.iterator();
-        String ordenApellidos = "Empleados ordenados por apellido:\n\n";
-        int contador = 1; // Variable para enumerar los empleados
+        String ordenApellidos = "EMPLEADOS ORDENADOS POR APELLIDO:\n\n";
+        int contador = 1; // Para numerar los empleados.
         while (itApellido.hasNext()) {
             Empleado empleado = itApellido.next();
             ordenApellidos += contador + "- " + empleado.toString() + "\n";
-            contador++; // Incremento el contador para el siguiente empleado
+            contador++; // Para el siguiente empleado.
         }
         JOptionPane.showMessageDialog(null, ordenApellidos);
     } // FIN METODO
     
-    // METODO para calcular el gasto total sumando los salarios de todos los empleados
+    // METODO para calcular el gasto total sumando los salarios de todos los empleados.
     private static void calcularGastoTotal() {
         double gastoTotal = 0; // Inicializo variable.
 
@@ -192,7 +195,6 @@ public class EmpleadosEmpresa {
             Empleado empleado = iterator.next();
             gastoTotal += empleado.getSalario();
         }
-        JOptionPane.showMessageDialog(null, "El gasto total en salarios de los empleados es: " + gastoTotal);
         */
     } // FIN METODO
     
@@ -218,7 +220,7 @@ public class EmpleadosEmpresa {
             try {
                 String strOpcion = JOptionPane.showInputDialog(menu);
                 
-                // Para cerrar el programa si el usuario pulsa cancelar en el diálogo inicial
+                // Cierro el programa si pulso cancelar en el menú principal.
                 if (strOpcion == null) {
                     JOptionPane.showMessageDialog(null, "\nSaliendo...");
                     System.exit(0); 
@@ -260,7 +262,6 @@ public class EmpleadosEmpresa {
                                     break;
                                 default:
                                     JOptionPane.showMessageDialog(null, "Opción no válida. Introduce una opción válida o 's' para volver.");
-                                    continue; // Continúa el bucle si no elijo una opción válida.
                             } // FIN SWITCH
                             
                         } while (true); // FIN DO-WHILE

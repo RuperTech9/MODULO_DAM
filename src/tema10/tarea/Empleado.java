@@ -2,6 +2,7 @@
 package tema10.tarea;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 /**
  *
@@ -69,10 +70,14 @@ public class Empleado {
     // METODO toString
     @Override
     public String toString() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        String fechaNacimientoFormatted = fechaNacimiento.format(formatter);
+        String fechaIngresoFormatted = fechaIngreso.format(formatter);
+        
         return nombre +
            " " + apellidos +
-           "    FECHA NACIMIENTO: " + fechaNacimiento +
-           "    FECHA INGRESO: " + fechaIngreso +
+           "    FECHA NACIMIENTO: " + fechaNacimientoFormatted +
+           "    FECHA INGRESO: " + fechaIngresoFormatted +
            "    PUESTO: " + puesto +
            "    SALARIO: " + salario;
     }
