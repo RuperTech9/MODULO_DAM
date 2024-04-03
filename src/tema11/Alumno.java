@@ -13,12 +13,7 @@ public class Alumno {
     public Alumno(String nombre) {
         this.nombre = nombre;
     }
-
-    @Override
-    public String toString() {
-        return "Alumno{" + "nombre=" + nombre + '}';
-    }
-
+    
     public String getNombre() {
         return nombre;
     }
@@ -27,5 +22,8 @@ public class Alumno {
         this.nombre = nombre;
     }
     
-    
+    @Override
+    public String toString() {
+        return "Alumno{" + "nombre=" + nombre + '}';
+    }
 }
