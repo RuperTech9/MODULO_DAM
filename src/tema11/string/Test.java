@@ -1,5 +1,5 @@
 
-package tema11;
+package tema11.string;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -16,7 +16,7 @@ public class Test {
         // Definicion del array list de tipo String
         ArrayList<String> alumnos = new ArrayList<>();
         // Instanciar el fichero donde se encuentran los datos
-        File fichero = new File(".\\src\\tema11\\alumnos.txt");
+        File fichero = new File(".\\src\\tema11\\string\\alumnos.txt");
         Scanner sc = null;
         
         
@@ -44,6 +44,5 @@ public class Test {
             String alumnosDAM = iterator.next(); // Recorro la Lista de Empleados.
             System.out.println(alumnosDAM);
         }
-        
     }
 }

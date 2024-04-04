@@ -1,5 +1,5 @@
 
-package tema11;
+package tema11.string;
 
 /**
  *
