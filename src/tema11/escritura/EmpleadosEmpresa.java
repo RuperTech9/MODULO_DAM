@@ -220,9 +220,9 @@ public class EmpleadosEmpresa {
     // Método para leer los datos de empleados desde un archivo de texto
     private static void leerEmpleadosDesdeArchivo() {
         File archivo = new File(".\\src\\tema11\\escritura\\empleados.txt");
-        try (Scanner scanner = new Scanner(archivo)) {
-            while (scanner.hasNextLine()) {
-                String[] datos = scanner.nextLine().split(",");
+        try (Scanner sc = new Scanner(archivo)) {
+            while (sc.hasNextLine()) {
+                String[] datos = sc.nextLine().split(",");
                 String nombre = datos[0];
                 String apellidos = datos[1];
                 LocalDate fechaNacimiento = LocalDate.parse(datos[2], DateTimeFormatter.ofPattern("dd/MM/yyyy"));
