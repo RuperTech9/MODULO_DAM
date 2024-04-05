@@ -78,7 +78,7 @@ public class EmpleadosEmpresa {
             } // FIN TRY-CATCH
         } while (true); // FIN DO-WHILE
         
-        empleados.add(new Empleado(nombre, apellidos, fechaNacimiento, fechaIngreso, puesto, salario));
+        empleados.add(new Empleado(nombre, apellidos, fechaNacimiento, fechaIngreso, puesto, salario));                                                       
         JOptionPane.showMessageDialog(null, "El empleado " + nombre + " ha sido añadido a la lista.");
  
     }
