@@ -59,13 +59,11 @@ public class prueba1 {
                 escritura = sc.nextLine();
                 bw.write(escritura);
                 
-                bw.flush();; //Para guardar el fichero
-                
+                bw.flush();; //Para guardar el fichero         
                 
             }catch(Exception e){
                 
             }
-        }
-        
+        } 
     }//Fin main
 }//Fin class

@@ -1,7 +1,6 @@
 
 package tema11.objetos;
 
-
 /**
  *
  * @author alumno
