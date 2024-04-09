@@ -13,12 +13,17 @@ import java.util.Scanner;
 public class lecturaEscrituraV1 {
     public static void main(String[] args) {
         // Ruta del fichero
-        String rutaFichero = ".\\src\\tema11\\escribir\\prueba.txt";
+        String rutaFichero = ".\\src\\tema11\\lectura_escritura\\prueba.txt";
         
+        // Inicializo variables  para leer y escribir en el archivo respectivamente.
         BufferedReader br = null;
         PrintWriter pw = null;
 
         // Primero, leemos y mostramos el contenido del fichero
+        /*
+         * Lectura del contenido del fichero: Se utiliza un bloque try-catch-finally para leer el contenido del archivo línea por línea utilizando un BufferedReader. 
+         * Cada línea se imprime en la consola. En el bloque finally, se cierra el BufferedReader para liberar recursos.
+         */
         System.out.println("\nContenido del fichero:");
         File fichero = new File(rutaFichero);
         try {
@@ -46,8 +51,12 @@ public class lecturaEscrituraV1 {
         sc.close();
 
         // Finalmente, escribimos el dato al final del fichero
+        /*
+         * Se utiliza un bloque try-catch-finally para escribir el dato ingresado por el usuario al final del archivo utilizando un PrintWriter. 
+         * En el bloque finally, se cierra el PrintWriter.
+        */
         try {
-            pw = new PrintWriter(new BufferedWriter(new FileWriter(rutaFichero, true)));
+            pw = new PrintWriter(new BufferedWriter(new FileWriter(rutaFichero, true))); // Sin true se sobreescribe el fichero cada vez que lo ejecuto.
             pw.println(dato);
             System.out.println("\nSe ha añadido el dato al fichero.");
         } catch (IOException e) {
@@ -58,7 +67,7 @@ public class lecturaEscrituraV1 {
             }
         }
 
-        // Mostramos el contenido actualizado del fichero
+        // Mostramos el contenido actualizado del fichero usando un BufferedReader
         System.out.println("\nContenido actualizado del fichero:");
         try {
             br = new BufferedReader(new FileReader(fichero));

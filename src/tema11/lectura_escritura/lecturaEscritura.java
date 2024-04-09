@@ -13,7 +13,7 @@ import java.util.Scanner;
 public class lecturaEscritura {
     public static void main(String[] args) {
         // Ruta del fichero
-        String rutaFichero = ".\\src\\tema11\\escribir\\prueba.txt";
+        String rutaFichero = ".\\src\\tema11\\lectura_escritura\\prueba.txt";
 
         // Primero, leemos y mostramos el contenido del fichero
         System.out.println("\nContenido del fichero:");

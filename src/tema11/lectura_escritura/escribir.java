@@ -13,7 +13,7 @@ public class escribir {
         PrintWriter pw = null;
         
         try{
-            fichero = new FileWriter(".\\src\\tema11\\escribir\\prueba.txt"); // Creamos el fichero
+            fichero = new FileWriter(".\\src\\tema11\\lectura_escritura\\prueba.txt"); // Creamos el fichero
             pw = new PrintWriter(fichero);
             
             for (int i = 0; i < 10; i++) {
