@@ -231,6 +231,7 @@ public class EmpleadosEmpresa {
                 double salario = Double.parseDouble(datos[5]);
                 empleados.add(new Empleado(nombre, apellidos, fechaNacimiento, fechaIngreso, puesto, salario));
             }
+            sc.close();
             JOptionPane.showMessageDialog(null, "Los datos de empleados se han cargado desde el archivo.");
         } catch (IOException e) {
             JOptionPane.showMessageDialog(null, "Error al leer los datos de empleados desde el archivo.");
