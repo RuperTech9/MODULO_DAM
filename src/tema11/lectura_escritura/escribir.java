@@ -1,5 +1,5 @@
 
-package tema11.escribir;
+package tema11.lectura_escritura;
 
 import java.io.*;
 
