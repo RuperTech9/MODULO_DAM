@@ -1,18 +1,19 @@
 
 package tema11.lectura_escritura;
 
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Scanner;
+
+
+
 /**
- * Lee un fichero de datos y lo muestra por pantalla
- * pregunta al usuario que dato quiere escribir
- * y lo añade al final del fichero en una nueva linea
- * 
+ *
  * @author alumno
  */
-public class lecturaEscritura {
+public class lecturaEscrituraV2 {
     public static void main(String[] args) {
         // Ruta del fichero
         String rutaFichero = ".\\src\\tema11\\lectura_escritura\\prueba.txt";
@@ -45,7 +46,7 @@ public class lecturaEscritura {
         String dato = sc.nextLine();
         sc.close();
         
-        // Añadir 
+        // Añadir Dato
         lista.add(dato);
         
         // Imprimir ArrayList
@@ -55,19 +56,30 @@ public class lecturaEscritura {
         }
         System.out.println("ArrayList con dato nuevo");
         System.out.println(lista);
-        
-        
 
-        // Finalmente, escribimos el dato al final del fichero
-        try (PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(rutaFichero, true)))) {
-            pw.println(dato);
+        // Finalmente, escribimos el dato al final del fichero sin sobreescribir
+        FileWriter fw = null;
+        PrintWriter pw = null;
+        
+        try {
+            fw = new FileWriter(rutaFichero, true);
+            pw = new PrintWriter(fw);
+            
+            pw.println(dato); //Retorno de carro
+            pw.flush();
+            
             System.out.println("\nSe ha añadido el dato al fichero.");
         } catch (IOException e) {
             e.printStackTrace();
+        } finally{ // Haya excepción o no asegurarse de que se cierra el archivo.
+            try{
+                if(null != fw)
+                    fw.close();
+            } catch (Exception e2){
+                e2.printStackTrace();
+            }
         }
-
-        // Mostramos el contenido actualizado del fichero
-        System.out.println("\nContenido actualizado del fichero:");
+        
         try (BufferedReader br = new BufferedReader(new FileReader(fichero))) {
             String linea;
             while ((linea = br.readLine()) != null) {
@@ -79,4 +91,4 @@ public class lecturaEscritura {
     }
 }
 
-// Imp
+// Este mismo ejercicio pero que lo guarde de forma ordenada descendente, una vez la lista este ordenada, guardarla y sobrescribir en el fichero

@@ -44,8 +44,8 @@ public class prueba1 {
         } // PRIMER IF CREACION DEL FICHERO
         else{
             try { //usaremos BufferedReader y BufferedWriter
-                BufferedReader br = new BufferedReader(new FileReader(".\\src\\tema11\\escritura\\prueba2.txt")); //Lectura
-                BufferedWriter bw = new BufferedWriter(new FileWriter(".\\src\\tema11\\escritura\\prueba2.txt")); //Escritura
+                BufferedReader br = new BufferedReader(new FileReader(".\\src\\tema11\\escritura\\prueba1.txt")); //Lectura
+                BufferedWriter bw = new BufferedWriter(new FileWriter(".\\src\\tema11\\escritura\\prueba1.txt")); //Escritura
                 
                 //Escribimos en el fichero
                 bw.write("LINEA 1");
@@ -59,7 +59,7 @@ public class prueba1 {
                 escritura = sc.nextLine();
                 bw.write(escritura);
                 
-                bw.flush();; //Para guardar el fichero         
+                bw.flush();; //Para guardar en el fichero         
                 
             }catch(Exception e){
                 
