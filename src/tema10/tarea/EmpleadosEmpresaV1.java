@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
  *
  * @author Ruper
  */
-public class EmpleadosEmpresa {
+public class EmpleadosEmpresaV1 {
     // ArrayList de Objetos
     static ArrayList<Empleado> empleados = new ArrayList<>();
     

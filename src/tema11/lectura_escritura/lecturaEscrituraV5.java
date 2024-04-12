@@ -10,13 +10,10 @@ import java.util.Scanner;
 
 
 /**
- * (1) lee un fichero de datos.
- * (2) Pregunta al usuario que dato quiere escribir.
- * (3) Ordena la lista descendente y sobreescribirlo en el fichero.
- * 
+ *
  * @author alumno
  */
-public class lecturaEscrituraV4Ordenada {
+public class lecturaEscrituraV5 {
     public static void main(String[] args) {
         // Ruta del fichero
         String rutaFichero = ".\\src\\tema11\\lectura_escritura\\prueba.txt";
@@ -43,7 +40,7 @@ public class lecturaEscrituraV4Ordenada {
             System.out.println(linea);
         }
 
-        // (2)Pedir datos
+        // Pedir datos
         Scanner sc = new Scanner(System.in);
         System.out.println("\nIntroduce un nuevo dato:");
         String dato = sc.nextLine();
@@ -51,44 +48,40 @@ public class lecturaEscrituraV4Ordenada {
         
         // Añadir Dato
         lista.add(dato);
+       
         
-        // (3)Ordenar la lista en orden descendente
-        lista.sort(Collections.reverseOrder());
+        // Ordenar la lista en orden descendente
+        Collections.sort(lista, Collections.reverseOrder());
         
-
-        
-
-        // ESCRIBIR el dato al final del fichero sin sobreescribir
+        // ESCRIBIR 2 el dato al final del fichero sin sobreescribir
         FileWriter fw = null;
-        PrintWriter pw = null;
-        
         try {
             fw = new FileWriter(rutaFichero);
-            pw = new PrintWriter(fw);
+            BufferedWriter bw = new BufferedWriter(fw);
             
             // Imprimir ArrayList con Iterator
             Iterator<String> imprimir = lista.iterator();
             System.out.println("\nArrayList ordenado de forma descendente:");
             while(imprimir.hasNext()){
-                String linea = imprimir.next();
-                System.out.println(linea);
-                pw.println(linea); // Escribir la línea en el archivo
+                bw.newLine();
+                bw.write(imprimir.next());
             }
-            pw.flush();
+            bw.close();
             
-            System.out.println("\nSe ha añadido el dato al fichero.");
+            System.out.println("La cadena se ha escrito en el archivo.");
+            
         } catch (IOException e) {
             e.printStackTrace();
-        } finally{ // Haya excepción o no asegurarse de que se cierra el archivo.
-            try{
-                if(null != fw)
-                    fw.close();
-            } catch (Exception e2){
-                e2.printStackTrace();
+            System.out.println("No se ha encontrado el archivo");
+        } finally {
+            try {
+                if (fw != null) {
+                    fw.close(); // Cerrar el BufferedWriter
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         }
-        
-        
         
         // Mostramos el contenido actualizado del fichero
         System.out.println("\nContenido actualizado del fichero:");

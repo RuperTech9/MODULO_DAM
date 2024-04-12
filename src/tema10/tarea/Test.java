@@ -9,8 +9,8 @@ import java.time.LocalDate;
  */
 public class Test {
     public static void main(String[] args){
-        // Objeto EmpleadosEmpresa
-        EmpleadosEmpresa empresa = new EmpleadosEmpresa();
+        // Objeto EmpleadosEmpresaV1
+        EmpleadosEmpresaV1 empresa = new EmpleadosEmpresaV1();
        
         // EMPLEADO 1
         LocalDate fechaNacimientoJuan = LocalDate.parse("1960-01-01");
