@@ -48,7 +48,6 @@ public class lecturaEscrituraV4Ordenada {
         
         // Añadir Dato
         lista.add(dato);
-       
         
         // Ordenar la lista en orden descendente
         lista.sort(Collections.reverseOrder());
@@ -68,7 +67,9 @@ public class lecturaEscrituraV4Ordenada {
             Iterator<String> imprimir = lista.iterator();
             System.out.println("\nArrayList ordenado de forma descendente:");
             while(imprimir.hasNext()){
-                pw.println(imprimir.next());
+                String linea = imprimir.next();
+                System.out.println(linea);
+                pw.println(linea); // Escribir la línea en el archivo
             }
             pw.flush();
             
