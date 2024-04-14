@@ -1,12 +1,14 @@
 
 package tema11.tarea;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Iterator;
 import java.util.Comparator;
 import java.time.format.DateTimeParseException;
+import java.util.Collections;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -14,7 +16,7 @@ import java.util.Scanner;
  *
  * @author Ruper
  */
-public class EmpleadosEmpresaV1 {
+public class EmpleadosEmpresaV0 {
     // ArrayList de Objetos
     static ArrayList<Empleado> empleados = new ArrayList<>();
     static Scanner sc = new Scanner(System.in);
@@ -86,6 +88,7 @@ public class EmpleadosEmpresaV1 {
         
         empleados.add(new Empleado(nombre, apellidos, fechaNacimiento, fechaIngreso, puesto, salario));                                                       
         System.out.println("El empleado " + nombre + " ha sido añadido a la lista.");
+        ordenarYGuardarEmpleados();
  
     }
     
@@ -115,6 +118,7 @@ public class EmpleadosEmpresaV1 {
         } else {
             System.out.println("No se encontró ningún empleado con ese nombre.");
         } // FIN IF
+        ordenarYGuardarEmpleados();
     } // FIN METODO
     
     // METODO que busca un empleado por nombre y apellidos
@@ -134,7 +138,7 @@ public class EmpleadosEmpresaV1 {
             if (empleado.getNombre().equalsIgnoreCase(nombre) && empleado.getApellidos().equalsIgnoreCase(apellido)) {
                 System.out.println(empleado.toString()); // Muestro los datos del empleado con el nombre especificado.
                 encontrado = true;
-                break;
+                // El bucle continuará hasta el final de la lista de empleados por si hay 2 usuarios con el mismo nombre y apellidos.
             } // FIN IF
         } // FIN WHILE
         if (!encontrado) {
@@ -290,4 +294,24 @@ public class EmpleadosEmpresaV1 {
             } // FIN TRY-CATCH
         } while (opcion != 6); // FIN DO-WHILE
     } // FIN METODO
+    
+    // Método para ordenar los empleados por apellido, nombre, fecha de nacimiento, fecha de ingreso, puesto y salario y para guardar los empleados en un archivo
+    private static void ordenarYGuardarEmpleados() {
+        Collections.sort(empleados, Comparator.comparing(Empleado::getApellidos)
+                .thenComparing(Empleado::getNombre)
+                .thenComparing(Empleado::getFechaNacimiento)
+                .thenComparing(Empleado::getFechaIngreso)
+                .thenComparing(Empleado::getPuesto)
+                .thenComparingDouble(Empleado::getSalario));
+
+        String rutaFichero = ".\\src\\tema11\\tarea\\empleados.txt";
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(rutaFichero))) {
+            for (Empleado empleado : empleados) {
+                writer.write(empleado.toString() + "\n");
+            }
+            System.out.println("Empleados guardados en el archivo " + rutaFichero);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 } // FIN CLASE
