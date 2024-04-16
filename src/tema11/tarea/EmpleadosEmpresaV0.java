@@ -8,7 +8,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.Iterator;
 import java.util.Comparator;
 import java.time.format.DateTimeParseException;
-import java.util.Collections;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -20,6 +19,12 @@ public class EmpleadosEmpresaV0 {
     // ArrayList de Objetos
     static ArrayList<Empleado> empleados = new ArrayList<>();
     static Scanner sc = new Scanner(System.in);
+    static String rutaFichero = ".\\src\\tema11\\tarea\\empleados.txt";
+    
+    // CONSTRUCTOR
+    public EmpleadosEmpresaV0() {
+        cargarEmpleadosDesdeArchivo(); // Cargar empleados al iniciar el programa
+    }
     
     // METODO para añadir un empleado.
     private static void añadirEmpleado() {
@@ -88,8 +93,8 @@ public class EmpleadosEmpresaV0 {
         
         empleados.add(new Empleado(nombre, apellidos, fechaNacimiento, fechaIngreso, puesto, salario));                                                       
         System.out.println("El empleado " + nombre + " ha sido añadido a la lista.");
-        ordenarYGuardarEmpleados();
- 
+        
+        escribirEmpleadosEnArchivo(empleados, rutaFichero);
     }
     
     // METODO que elimina un empleado por nombre y apellidos
@@ -108,6 +113,19 @@ public class EmpleadosEmpresaV0 {
         while (iterator.hasNext()) { // Mientras haya más elementos en la lista...
             Empleado empleado = iterator.next(); // Recorro la Lista de Empleados.
             if (empleado.getNombre().equalsIgnoreCase(nombre) && empleado.getApellidos().equalsIgnoreCase(apellido)) { // Compruebo si el nombre y el apellido coinciden.
+                ///////////////////////////////////////////////
+                // Ordenar los empleados por apellidos antes de escribir en el archivo
+                empleados.sort(Comparator.comparing(Empleado::getApellidos));
+                // Guardar al empleado en empleadosAntiguos.txt
+                try (FileWriter fw = new FileWriter(".\\src\\tema11\\tarea\\empleadosAntiguos.txt", true);
+                    PrintWriter pw = new PrintWriter(fw)) {
+                    // Escribir los datos del empleado en el archivo empleadosAntiguos.txt
+                    pw.println(empleado.getNombre() + ", " + empleado.getApellidos() + ", " + empleado.getFechaNacimiento() + ", " 
+                             + empleado.getFechaIngreso() + ", " +LocalDate.now()); // La fecha de finalización es la fecha actual
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                ///////////////////////////////////////////////
                 iterator.remove(); // Elimino el empleado.
                 encontrado = true;
                 break;
@@ -118,7 +136,6 @@ public class EmpleadosEmpresaV0 {
         } else {
             System.out.println("No se encontró ningún empleado con ese nombre.");
         } // FIN IF
-        ordenarYGuardarEmpleados();
     } // FIN METODO
     
     // METODO que busca un empleado por nombre y apellidos
@@ -213,6 +230,38 @@ public class EmpleadosEmpresaV0 {
         */
     } // FIN METODO
     
+    private static void escribirEmpleadosEnArchivo(ArrayList<Empleado> empleados, String rutaFichero) {
+        // Ordenar los empleados por apellidos antes de escribir en el archivo
+        empleados.sort(Comparator.comparing(Empleado::getApellidos));
+        try (FileWriter fw = new FileWriter(rutaFichero, true);
+             PrintWriter pw = new PrintWriter(fw)) {
+            for (Empleado empleado : empleados) {
+                pw.println(empleado); // Escribir el empleado en el archivo
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    // Método para cargar los empleados desde el archivo al iniciar el programa
+    private static void cargarEmpleadosDesdeArchivo() {
+        try (FileReader fichero = new FileReader(rutaFichero);
+            BufferedReader br = new BufferedReader(fichero)) {
+            String linea;
+            while ((linea = br.readLine()) != null) {
+                String[] datosEmpleado = linea.split(" ");
+                String nombre = datosEmpleado[0];
+                String apellidos = datosEmpleado[1];
+                LocalDate fechaNacimiento = LocalDate.parse(datosEmpleado[2]);
+                LocalDate fechaIngreso = LocalDate.parse(datosEmpleado[3]);
+                String puesto = datosEmpleado[4];
+                double salario = Double.parseDouble(datosEmpleado[5]);
+                empleados.add(new Empleado(nombre, apellidos, fechaNacimiento, fechaIngreso, puesto, salario));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
     
     // METODO para mostrar el menú
     public void mostrarMenu() {        
@@ -294,24 +343,4 @@ public class EmpleadosEmpresaV0 {
             } // FIN TRY-CATCH
         } while (opcion != 6); // FIN DO-WHILE
     } // FIN METODO
-    
-    // Método para ordenar los empleados por apellido, nombre, fecha de nacimiento, fecha de ingreso, puesto y salario y para guardar los empleados en un archivo
-    private static void ordenarYGuardarEmpleados() {
-        Collections.sort(empleados, Comparator.comparing(Empleado::getApellidos)
-                .thenComparing(Empleado::getNombre)
-                .thenComparing(Empleado::getFechaNacimiento)
-                .thenComparing(Empleado::getFechaIngreso)
-                .thenComparing(Empleado::getPuesto)
-                .thenComparingDouble(Empleado::getSalario));
-
-        String rutaFichero = ".\\src\\tema11\\tarea\\empleados.txt";
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(rutaFichero))) {
-            for (Empleado empleado : empleados) {
-                writer.write(empleado.toString() + "\n");
-            }
-            System.out.println("Empleados guardados en el archivo " + rutaFichero);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 } // FIN CLASE
