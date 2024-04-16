@@ -1,7 +1,6 @@
 
 package tema11.tarea;
 
-
 import java.util.ArrayList;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -9,97 +8,89 @@ import java.util.Iterator;
 import java.util.Comparator;
 import java.time.format.DateTimeParseException;
 import java.util.InputMismatchException;
-import java.util.Scanner;
+import javax.swing.JOptionPane;
 import java.io.*;
 
 /**
  *
  * @author Ruper
  */
-public class EmpleadosEmpresaV0 {
+public class EmpleadosEmpresaV1 {
     // ArrayList de Objetos
     static ArrayList<Empleado> empleados = new ArrayList<>();
-    static Scanner sc = new Scanner(System.in);
     static String rutaEmpleados = ".\\src\\tema11\\tarea\\empleados.txt";
     static String rutaEmpleadosAntiguos = ".\\src\\tema11\\tarea\\empleadosAntiguos.txt";
-    
     
     // METODO para añadir un empleado.
     private static void añadirEmpleado() {
         // NOMBRE Y APELLIDOS
-        System.out.println("Introduce el nombre del empleado:");
-        String nombre = sc.nextLine();
+        String nombre = JOptionPane.showInputDialog("Introduce el nombre del empleado:");
         if (nombre == null) return; // Salgo del método si presiono cancelar
-        System.out.println("Introduce los apellidos del empleado:");
-        String apellidos = sc.nextLine();
+        String apellidos = JOptionPane.showInputDialog("Introduce los apellidos del empleado:");
         if (apellidos == null) return;
         
         // FECHA DE NACIMIENTO
         LocalDate fechaNacimiento = null; // Inicializo variable
         do {
-            System.out.println("Introduce la fecha de nacimiento del empleado (DD/MM/YYYY):");
-            String strFechaNacimiento = sc.nextLine();
+            String strFechaNacimiento = JOptionPane.showInputDialog("Introduce la fecha de nacimiento del empleado (DD/MM/YYYY):");
             if (strFechaNacimiento == null) return; // Sale del método si se presiona cancelar
             try {
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy"); // Cambio el formato de la fecha.
                 fechaNacimiento = LocalDate.parse(strFechaNacimiento, formatter);
                 break; // Salgo si la fecha es correcta
             } catch (DateTimeParseException e) {
-                System.err.println("ERROR. Introduce el formato correcto DD/MM/YYYY.");
+                JOptionPane.showMessageDialog(null, "ERROR. Introduce el formato correcto DD/MM/YYYY.");
             } // FIN TRY-CATCH
         } while (fechaNacimiento == null); // FIN DO-WHILE
         
         // FECHA DE INGRESO
         LocalDate fechaIngreso = null; // Inicializo variable
         do {
-            System.out.println("Introduce la fecha de ingreso del empleado (DD/MM/YYYY):");
-            String strFechaIngreso = sc.nextLine();
+            String strFechaIngreso = JOptionPane.showInputDialog("Introduce la fecha de ingreso del empleado (DD/MM/YYYY):");
+            if (strFechaIngreso == null) return;
             try {
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy"); // Cambio el formato de la fecha.
                 fechaIngreso = LocalDate.parse(strFechaIngreso, formatter);
                 if (fechaIngreso != null && fechaNacimiento != null && fechaIngreso.isBefore(fechaNacimiento)) { // Verifico que la fecha de ingreso no sea anterior a la fecha de nacimiento
-                    System.out.println("La fecha de ingreso no puede ser anterior a la fecha de nacimiento. Por favor, introduce una fecha válida.");
+                    JOptionPane.showMessageDialog(null, "La fecha de ingreso no puede ser anterior a la fecha de nacimiento. Por favor, introduce una fecha válida.");
                     fechaIngreso = null; // Restablezco la fechaIngreso para repetir el bucle
                 } else {
                     break; // Salgo si la fecha es correcta
                 }
             } catch (DateTimeParseException e) {
-                System.err.println("ERROR. Introduce el formato correcto DD/MM/YYYY.");
+                JOptionPane.showMessageDialog(null, "ERROR. Introduce el formato correcto DD/MM/YYYYD.");
             } // FIN TRY-CATCH
         } while (fechaIngreso == null); // FIN DO-WHILE
         
         // PUESTO
-        System.out.println("Introduce el puesto del empleado:");
-        String puesto = sc.nextLine();
+        String puesto = JOptionPane.showInputDialog(null, "Introduce el puesto del empleado:");
         
         // SALARIO
         double salario = 0; // Inicializo variable.
         do {
-            System.out.println("Introduce el salario del empleado:");
-            String strSalario = sc.nextLine();
+            String strSalario = JOptionPane.showInputDialog("Introduce el salario del empleado:");
             try {
                 salario = Double.parseDouble(strSalario);
                 if (salario > 0) {
                     break; // Salgo si el salario es correcto y positivo.
                 } else {
-                    System.err.println("El salario debe ser mayor que 0. Intentalo de nuevo.");
+                    JOptionPane.showMessageDialog(null, "El salario debe ser mayor que 0. Intentalo de nuevo.");
                 } // FIN IF
             } catch (InputMismatchException e) {
-                System.err.println("ERROR. Se esperaba un número para el salario. Intentalo de nuevo.");
+                JOptionPane.showMessageDialog(null, "ERROR. Se esperaba un número para el salario. Intentalo de nuevo.");
             } // FIN TRY-CATCH
         } while (true); // FIN DO-WHILE
         
         empleados.add(new Empleado(nombre, apellidos, fechaNacimiento, fechaIngreso, puesto, salario));                                                       
-        System.out.println("\nEl empleado " + nombre + " ha sido añadido a la lista.");
+        JOptionPane.showMessageDialog(null, "El empleado " + nombre + " ha sido añadido a la lista.");
+ 
     }
     
     // METODO que elimina un empleado por nombre y apellidos
     private static void eliminarEmpleado() {
-        System.out.println("Introduce el nombre del empleado a eliminar:");
-        String nombre = sc.nextLine();
+        String nombre = JOptionPane.showInputDialog("Introduce el nombre del empleado a eliminar:");
         if (nombre == null) return; // Salgo del método si presiono cancelar
-        System.out.println("Introduce el apellido del empleado a eliminar:");
-        String apellido = sc.nextLine();
+        String apellido = JOptionPane.showInputDialog("Introduce el apellido del empleado a eliminar:");
         if (apellido == null) return;
         
         boolean encontrado = false; // Inicializo variable.
@@ -109,7 +100,6 @@ public class EmpleadosEmpresaV0 {
         while (iterator.hasNext()) { // Mientras haya más elementos en la lista...
             Empleado empleado = iterator.next(); // Recorro la Lista de Empleados.
             if (empleado.getNombre().equalsIgnoreCase(nombre) && empleado.getApellidos().equalsIgnoreCase(apellido)) { // Compruebo si el nombre y el apellido coinciden.
-                
                 // Guardar al empleado en empleadosAntiguos.txt llamando al método
                 guardarEmpleadoEnAntiguos(empleado);
                 
@@ -119,19 +109,16 @@ public class EmpleadosEmpresaV0 {
             } // FIN IF
         }
         if (encontrado) {
-            System.out.println("\nEl empleado " + nombre + " ha sido eliminado de la lista.");
+            JOptionPane.showMessageDialog(null, "El empleado " + nombre + " ha sido eliminado de la lista.");
         } else {
-            System.err.println("\nNo se encontró ningún empleado con ese nombre.");
+            JOptionPane.showMessageDialog(null, "No se encontró ningún empleado con ese nombre.");
         } // FIN IF
     } // FIN METODO
     
     // METODO que busca un empleado por nombre y apellidos
     private static void buscarEmpleado() {
-        System.out.println("Introduce el nombre del empleado:");
-        String nombre = sc.nextLine();
-
-        System.out.println("Introduce el apellido del empleado:");
-        String apellido = sc.nextLine();
+        String nombre = JOptionPane.showInputDialog("Introduce el nombre del empleado:");
+        String apellido = JOptionPane.showInputDialog("Introduce el apellido del empleado:");
     
         boolean encontrado = false; // Inicializo variable.
         
@@ -140,13 +127,13 @@ public class EmpleadosEmpresaV0 {
         while (iterator.hasNext()) { // Mientras haya más elementos en la lista...
             Empleado empleado = iterator.next(); // Recorro la Lista de Empleados.
             if (empleado.getNombre().equalsIgnoreCase(nombre) && empleado.getApellidos().equalsIgnoreCase(apellido)) {
-                System.out.println(empleado.toString()); // Muestro los datos del empleado con el nombre especificado.
+                JOptionPane.showMessageDialog(null, empleado.toString()); // Muestro los datos del empleado con el nombre especificado.
                 encontrado = true;
-                // El bucle continuará hasta el final de la lista de empleados por si hay 2 usuarios con el mismo nombre y apellidos.
+                break;
             } // FIN IF
         } // FIN WHILE
         if (!encontrado) {
-            System.err.println("No se encontró ningún empleado con ese nombre.");
+            JOptionPane.showMessageDialog(null, "No se encontró ningún empleado con ese nombre.");
         } // FIN IF
     } // FIN METODO
     
@@ -164,7 +151,7 @@ public class EmpleadosEmpresaV0 {
             ordenAntiguos += contador + "- " + empleado.toString() + "\n";
             contador++; // Para el siguiente empleado.
         }
-        System.out.println(ordenAntiguos);
+        JOptionPane.showMessageDialog(null, ordenAntiguos);
     } // FIN METODO
     
     // METODO que ordena la lista de empleados por salario (de mayor a menor)
@@ -180,7 +167,7 @@ public class EmpleadosEmpresaV0 {
             ordenSalario += contador + "- " + empleado.toString() + "\n";
             contador++; // Para el siguiente empleado.
         }
-        System.out.println(ordenSalario);
+        JOptionPane.showMessageDialog(null, ordenSalario);
     } // FIN METODO
     
     // METODO que ordena la lista de empleados por apellido
@@ -196,7 +183,7 @@ public class EmpleadosEmpresaV0 {
             ordenApellidos += contador + "- " + empleado.toString() + "\n";
             contador++; // Para el siguiente empleado.
         }
-        System.out.println(ordenApellidos);
+        JOptionPane.showMessageDialog(null, ordenApellidos);
     } // FIN METODO
     
     // METODO para calcular el gasto total sumando los salarios de todos los empleados.
@@ -206,7 +193,7 @@ public class EmpleadosEmpresaV0 {
         for (Empleado empleado : empleados) {
             gastoTotal += empleado.getSalario(); // Sumo el salario del empleado actual al total.
         } // FIN FOR
-        System.out.println("\nEl gasto total en salarios de los empleados es: " + gastoTotal);
+        JOptionPane.showMessageDialog(null, "\nEl gasto total en salarios de los empleados es: " + gastoTotal);
         
         /* CON ITERATOR
         Iterator<Empleado> iterator = empleados.iterator();
@@ -217,30 +204,36 @@ public class EmpleadosEmpresaV0 {
         */
     } // FIN METODO
     
+    
     // METODO para mostrar el menú
     public void mostrarMenu() {
         leerEmpleadosDesdeFichero();
+        String menu = "\n               GESTIÓN DE EMPLEADOS" +
+                      "\n---------------------------------------------------------" +
+                      "\n1- Añadir Empleado" +
+                      "\n2- Eliminar Empleado" +
+                      "\n3- Buscar Empleado" +
+                      "\n4- Imprimir empleados ordenados por:" +
+                      "\n   a) Por antigüedad" +
+                      "\n   b) Por salario" +
+                      "\n   c) Por apellido" +
+                      "\n5- Calcular gasto total de los empleados" +
+                      "\n6- Salir" +
+                      "\n---------------------------------------------------------" +
+                      "\nSelecciona una opción: ";
+        
         int opcion = 0;
         do {     
             try {
-            String menu = "\n               GESTIÓN DE EMPLEADOS" +
-                          "\n---------------------------------------------------------" +
-                          "\n1- Añadir Empleado" +
-                          "\n2- Eliminar Empleado" +
-                          "\n3- Buscar Empleado" +
-                          "\n4- Imprimir empleados ordenados por:" +
-                          "\n   a) Por antigüedad" +
-                          "\n   b) Por salario" +
-                          "\n   c) Por apellido" +
-                          "\n5- Calcular gasto total de los empleados" +
-                          "\n6- Salir" +
-                          "\n---------------------------------------------------------" +
-                          "\nSelecciona una opción: ";
-            
-            System.out.print(menu);
-            opcion = sc.nextInt();
-            sc.nextLine(); // Salto de línea
-            
+                String strOpcion = JOptionPane.showInputDialog(menu);
+                
+                // Cierro el programa si pulso cancelar en el menú principal.
+                if (strOpcion == null) {
+                    JOptionPane.showMessageDialog(null, "\nSaliendo...");
+                    System.exit(0); 
+                }
+                
+                opcion = Integer.parseInt(strOpcion);
                 switch (opcion) {
                     case 1:
                         añadirEmpleado();
@@ -252,15 +245,13 @@ public class EmpleadosEmpresaV0 {
                         buscarEmpleado();
                         break;
                     case 4:
-                        String opcionOrdenamiento;
                         do {
                             String subMenu = "Elige una opción:\n" +
                                             "a) Por antigüedad\n" +
                                             "b) Por salario\n" +
                                             "c) Por apellido\n" +
                                             "s) Volver al menú principal";
-                            System.out.println(subMenu);
-                            opcionOrdenamiento = sc.nextLine();
+                            String opcionOrdenamiento = JOptionPane.showInputDialog(subMenu);
                             
                             // Si presiono cancelar o elijo 's', rompo el bucle y vuelvo al menú principal.
                             if (opcionOrdenamiento == null || opcionOrdenamiento.equalsIgnoreCase("s")) {
@@ -277,7 +268,7 @@ public class EmpleadosEmpresaV0 {
                                     ordenadosPorApellido();
                                     break;
                                 default:
-                                    System.err.println("Opción no válida. Introduce 'a', 'b', 'c' o 's' para volver.");
+                                    JOptionPane.showMessageDialog(null, "Opción no válida. Introduce una opción válida o 's' para volver.");
                             } // FIN SWITCH
                             
                         } while (true); // FIN DO-WHILE
@@ -286,21 +277,19 @@ public class EmpleadosEmpresaV0 {
                         calcularGastoTotal();
                         break;
                     case 6:
-                        System.out.println("\nSaliendo...");
+                        JOptionPane.showMessageDialog(null, "\nSaliendo...");
                         break;
                     default:
-                        System.err.println("\nOpción no válida. Introduce un número entre 1 y 6.");
+                        JOptionPane.showMessageDialog(null, "\nOpción no válida. Introduce un número entre 1 y 6.");
                         break;
                 } // FIN SWITCH
-            } catch (InputMismatchException e) {
-                System.err.println("ERROR. Entrada no válida, inténtalo de nuevo.");
-                sc.nextLine(); // Salto de línea
+            } catch (NumberFormatException e1) {
+                JOptionPane.showMessageDialog(null, "ERROR. Entrada no válida, inténtalo de nuevo.");
             } // FIN TRY-CATCH
         } while (opcion != 6); // FIN DO-WHILE
         ordenarFicheroPorApellido();
         guardarEmpleadosEnFichero();
     } // FIN METODO
-    
     
     // PERSISTENCIA DE DATOS
     // METODO para leer los datos de empleados.txt
@@ -393,5 +382,4 @@ public class EmpleadosEmpresaV0 {
     private static void ordenarFicheroPorApellido() {
         empleados.sort(Comparator.comparing(Empleado::getApellidos));
     } // FIN METODO
-    
 } // FIN CLASE
