@@ -258,12 +258,27 @@ public class EmpleadosEmpresaV0 {
         try (BufferedReader br = new BufferedReader(new FileReader(rutaFichero))) {
             String linea;
             while ((linea = br.readLine()) != null) {
+                // Procesar la línea y crear un objeto Empleado
+                String[] partes = linea.split(", ");
+                String nombre = partes[0];
+                String apellidos = partes[1];
+                LocalDate fechaNacimiento = LocalDate.parse(partes[2]);
+                LocalDate fechaIngreso = LocalDate.parse(partes[3]);
+                String puesto = partes[4];
+                double salario = Double.parseDouble(partes[5]);
+                
+                // Crear el objeto Empleado
+                Empleado empleado = new Empleado(nombre, apellidos, fechaNacimiento, fechaIngreso, puesto, salario);
+                
+                // Agregar el empleado al ArrayList
+                empleados.add(empleado);
+                
+                // Mostrar la línea
                 System.out.println(linea);
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
-        
     }
     
     
