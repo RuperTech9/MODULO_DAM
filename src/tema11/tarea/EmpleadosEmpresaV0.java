@@ -21,10 +21,6 @@ public class EmpleadosEmpresaV0 {
     static Scanner sc = new Scanner(System.in);
     static String rutaFichero = ".\\src\\tema11\\tarea\\empleados.txt";
     
-    // CONSTRUCTOR
-    public EmpleadosEmpresaV0() {
-        cargarEmpleadosDesdeArchivo(); // Cargar empleados al iniciar el programa
-    }
     
     // METODO para añadir un empleado.
     private static void añadirEmpleado() {
@@ -231,35 +227,43 @@ public class EmpleadosEmpresaV0 {
     } // FIN METODO
     
     private static void escribirEmpleadosEnArchivo(ArrayList<Empleado> empleados, String rutaFichero) {
-        // Ordenar los empleados por apellidos antes de escribir en el archivo
-        empleados.sort(Comparator.comparing(Empleado::getApellidos));
-        try (FileWriter fw = new FileWriter(rutaFichero, true);
-             PrintWriter pw = new PrintWriter(fw)) {
-            for (Empleado empleado : empleados) {
+        FileWriter fw = null;
+        PrintWriter pw = null;
+
+        try {
+            fw = new FileWriter(rutaFichero, true); // Indicar true para que añada al final del fichero
+            pw = new PrintWriter(fw);
+
+            // Imprimir empleados con Iterator
+            Iterator<Empleado> iterator = empleados.iterator();
+            while (iterator.hasNext()) {
+                Empleado empleado = iterator.next();
                 pw.println(empleado); // Escribir el empleado en el archivo
             }
+            pw.flush();
+            
+            System.out.println("\nSe han añadido los empleados al fichero.");
         } catch (IOException e) {
             e.printStackTrace();
+        } finally { // Cerrar el archivo
+            try {
+                if (fw != null)
+                    fw.close();
+            } catch (IOException e2) {
+                e2.printStackTrace();
+            }
         }
-    }
-    // Método para cargar los empleados desde el archivo al iniciar el programa
-    private static void cargarEmpleadosDesdeArchivo() {
-        try (FileReader fichero = new FileReader(rutaFichero);
-            BufferedReader br = new BufferedReader(fichero)) {
+        // Mostramos el contenido actualizado del fichero
+        System.out.println("\nContenido actualizado del fichero:");
+        try (BufferedReader br = new BufferedReader(new FileReader(rutaFichero))) {
             String linea;
             while ((linea = br.readLine()) != null) {
-                String[] datosEmpleado = linea.split(" ");
-                String nombre = datosEmpleado[0];
-                String apellidos = datosEmpleado[1];
-                LocalDate fechaNacimiento = LocalDate.parse(datosEmpleado[2]);
-                LocalDate fechaIngreso = LocalDate.parse(datosEmpleado[3]);
-                String puesto = datosEmpleado[4];
-                double salario = Double.parseDouble(datosEmpleado[5]);
-                empleados.add(new Empleado(nombre, apellidos, fechaNacimiento, fechaIngreso, puesto, salario));
+                System.out.println(linea);
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
+        
     }
     
     
