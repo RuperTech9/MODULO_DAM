@@ -18,8 +18,8 @@ import java.io.*;
 public class EmpleadosEmpresaV1 {
     // ArrayList de Objetos
     static ArrayList<Empleado> empleados = new ArrayList<>();
-    static String rutaEmpleados = ".\\src\\tema11\\tarea\\empleados.txt";
-    static String rutaEmpleadosAntiguos = ".\\src\\tema11\\tarea\\empleadosAntiguos.txt";
+    static String rutaEmpleados = ".\\src\\tema11\\tarea\\empleado.txt";
+    static String rutaEmpleadosAntiguos = ".\\src\\tema11\\tarea\\empleadosAntiguo.txt";
     
     // METODO para añadir un empleado.
     private static void añadirEmpleado() {
@@ -309,6 +309,8 @@ public class EmpleadosEmpresaV1 {
                 
                 empleados.add(new Empleado(nombre, apellidos, fechaNacimiento, fechaIngreso, puesto, salario));
             }
+        } catch (FileNotFoundException e) {
+            System.err.println("El archivo " + rutaEmpleados + " no se encontró.");
         } catch (IOException | DateTimeParseException | ArrayIndexOutOfBoundsException e) {
             e.printStackTrace();
         } finally {
@@ -337,6 +339,8 @@ public class EmpleadosEmpresaV1 {
                          empleado.getPuesto() + "::" +
                          empleado.getSalario());
             }
+        } catch (FileNotFoundException e) {
+            System.err.println("El archivo " + rutaEmpleados + " no se encontró.");
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
@@ -364,6 +368,8 @@ public class EmpleadosEmpresaV1 {
                     empleado.getFechaNacimiento() + "::" + 
                     empleado.getFechaIngreso() + "::" + 
                     LocalDate.now()); // La fecha de finalización es la fecha actual
+        } catch (FileNotFoundException e) {
+            System.err.println("El archivo " + rutaEmpleadosAntiguos + " no se encontró.");
         } catch (IOException e) {
             e.printStackTrace();
         } finally {

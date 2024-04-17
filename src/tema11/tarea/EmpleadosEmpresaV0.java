@@ -320,6 +320,8 @@ public class EmpleadosEmpresaV0 {
                 
                 empleados.add(new Empleado(nombre, apellidos, fechaNacimiento, fechaIngreso, puesto, salario));
             }
+        } catch (FileNotFoundException e) {
+            System.err.println("El archivo " + rutaEmpleados + " no se encontró.");
         } catch (IOException | DateTimeParseException | ArrayIndexOutOfBoundsException e) {
             e.printStackTrace();
         } finally {
@@ -348,6 +350,8 @@ public class EmpleadosEmpresaV0 {
                          empleado.getPuesto() + "::" +
                          empleado.getSalario());
             }
+        } catch (FileNotFoundException e) {
+            System.err.println("El archivo " + rutaEmpleados + " no se encontró.");
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
@@ -375,6 +379,8 @@ public class EmpleadosEmpresaV0 {
                     empleado.getFechaNacimiento() + "::" + 
                     empleado.getFechaIngreso() + "::" + 
                     LocalDate.now()); // La fecha de finalización es la fecha actual
+        } catch (FileNotFoundException e) {
+            System.err.println("El archivo " + rutaEmpleados + " no se encontró.");
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
