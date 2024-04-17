@@ -303,8 +303,6 @@ public class EmpleadosEmpresaV0 {
     
     
     // PERSISTENCIA DE DATOS
-    
-    
     // METODO para leer los datos de empleados.txt
     private static void leerEmpleadosDesdeFichero() {
         BufferedReader br = null;
