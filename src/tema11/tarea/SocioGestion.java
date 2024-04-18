@@ -42,7 +42,27 @@ public class SocioGestion {
             } // FIN TRY-CATCH
         } while (fechaAlta == null); // FIN DO-WHILE
         Socio nuevo = new Socio (dni, nombre, fechaAlta);
-        return socios.add(nuevo);
+        if(socios.add(nuevo)) {
+            guardarSocioEnArchivo(nuevo);
+            return true;
+        } else {
+            return false;
+        }
+    }
+    static void guardarSocioEnArchivo(Socio socio) {
+        System.out.print("Introduce el nombre del archivo para este socio (sin .txt): ");
+        String nombreArchivo = sc.next();
+        File archivo = new File(".\\src\\tema11\\tarea\\" + nombreArchivo + ".txt");
+
+        try (PrintWriter pw = new PrintWriter(new FileWriter(archivo))) {
+            pw.println(socio.getDni() + "::" +
+                       socio.getNombre() + "::" +
+                       socio.getFechaAlta().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+            System.out.println("Socio guardado en archivo " + archivo.getName());
+        } catch (IOException e) {
+            System.err.println("ERROR al guardar el socio en el archivo.");
+            e.printStackTrace();
+        }
     }
     
     static boolean baja (Set<Socio> socios) {
