@@ -43,16 +43,16 @@ public class SocioGestion {
         } while (fechaAlta == null); // FIN DO-WHILE
         Socio nuevo = new Socio (dni, nombre, fechaAlta);
         if(socios.add(nuevo)) {
-            guardarSocioEnArchivo(nuevo);
+            guardarAltaEnArchivo(nuevo);
             return true;
         } else {
             return false;
         }
     }
-    static void guardarSocioEnArchivo(Socio socio) {
+    static void guardarAltaEnArchivo(Socio socio) {
         System.out.print("Introduce el nombre del archivo para este socio (sin .txt): ");
         String nombreArchivo = sc.next();
-        File archivo = new File(".\\src\\tema11\\tarea\\" + nombreArchivo + ".txt");
+        File archivo = new File(".\\src\\tema11\\tarea\\alta_" + nombreArchivo + ".txt");
 
         try (PrintWriter pw = new PrintWriter(new FileWriter(archivo))) {
             pw.println(socio.getDni() + "::" +
@@ -77,10 +77,25 @@ public class SocioGestion {
         }
         if (socioEliminado != null) {
             socios.remove(socioEliminado);
-            guardarEmpleadoEnAntiguos(socioEliminado);
+            guardarBajaEnArchivo(socioEliminado);
             return true;
         } else {
             return false;
+        }
+    }
+    static void guardarBajaEnArchivo(Socio socio) {
+        System.out.print("Introduce el nombre del archivo para este socio (sin .txt): ");
+        String nombreArchivo = sc.next();
+        File archivo = new File(".\\src\\tema11\\tarea\\baja_" + nombreArchivo + ".txt");
+
+        try (PrintWriter pw = new PrintWriter(new FileWriter(archivo))) {
+            pw.println(socio.getDni() + "::" +
+                       socio.getNombre() + "::" +
+                       socio.getFechaAlta().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+            System.out.println("Socio guardado en archivo " + archivo.getName());
+        } catch (IOException e) {
+            System.err.println("ERROR al guardar el socio en el archivo.");
+            e.printStackTrace();
         }
     }
     
