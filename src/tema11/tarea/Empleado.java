@@ -67,6 +67,7 @@ public class Empleado {
         this.salario = salario;
     }
     
+    
     // METODO toString
     @Override
     public String toString() {
