@@ -37,7 +37,6 @@ public class BBDD_Modificar {
             miStatement.executeUpdate(instruccionSQL_Delete);
             System.out.println("Datos borrados correctamente");
 
-
         }catch(SQLException e1){
             System.out.println("Error: "+e1.getMessage());
         }           
