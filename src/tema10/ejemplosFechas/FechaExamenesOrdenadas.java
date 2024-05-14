@@ -10,7 +10,7 @@ import java.util.Comparator;
  *
  * @author alumno
  */
-public class FechaExamenes {
+public class FechaExamenesOrdenadas {
     public static void main(String[] args){
         ArrayList<LocalDate> examenesDAM = new ArrayList<LocalDate>();
         LocalDate programacion = LocalDate.parse("2024-05-20");

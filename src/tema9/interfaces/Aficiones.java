@@ -3,12 +3,12 @@ package tema9.interfaces;
 
 /**
  *
- * @author alumno
+ * @author Ruper
  */
-public class Aficiones extends javax.swing.JPanel {
+public class Aficiones extends javax.swing.JFrame {
 
     /**
-     * Creates new form Ejemplo01
+     * Creates new form Aficiones1
      */
     public Aficiones() {
         initComponents();
@@ -26,12 +26,12 @@ public class Aficiones extends javax.swing.JPanel {
         bt_Musica = new javax.swing.JButton();
         bt_Deportes = new javax.swing.JButton();
         bt_Reset = new javax.swing.JButton();
-        tf_Resultado = new javax.swing.JTextField();
         lb_Aficiones = new javax.swing.JLabel();
+        tf_Resultado = new javax.swing.JTextField();
 
-        setBackground(new java.awt.Color(255, 255, 255));
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        bt_Musica.setBackground(new java.awt.Color(255, 255, 0));
+        bt_Musica.setBackground(new java.awt.Color(51, 255, 255));
         bt_Musica.setText("MUSICA");
         bt_Musica.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -44,7 +44,7 @@ public class Aficiones extends javax.swing.JPanel {
             }
         });
 
-        bt_Deportes.setBackground(new java.awt.Color(255, 255, 51));
+        bt_Deportes.setBackground(new java.awt.Color(51, 255, 255));
         bt_Deportes.setText("DEPORTES");
         bt_Deportes.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -58,6 +58,7 @@ public class Aficiones extends javax.swing.JPanel {
         });
 
         bt_Reset.setBackground(new java.awt.Color(153, 153, 153));
+        bt_Reset.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         bt_Reset.setText("RESET");
         bt_Reset.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -70,8 +71,11 @@ public class Aficiones extends javax.swing.JPanel {
             }
         });
 
-        tf_Resultado.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        tf_Resultado.setText("¿Cual es tu afición?");
+        lb_Aficiones.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lb_Aficiones.setText("AFICIONES");
+
+        tf_Resultado.setBackground(new java.awt.Color(255, 255, 153));
+        tf_Resultado.setText("¿Cuál es tu afición?");
         tf_Resultado.setEnabled(false);
         tf_Resultado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -79,49 +83,46 @@ public class Aficiones extends javax.swing.JPanel {
             }
         });
 
-        lb_Aficiones.setBackground(new java.awt.Color(255, 255, 255));
-        lb_Aficiones.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        lb_Aficiones.setText("AFICIONES");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(63, 63, 63)
+                .addGap(64, 64, 64)
                 .addComponent(bt_Musica)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 110, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 119, Short.MAX_VALUE)
                 .addComponent(bt_Deportes)
-                .addGap(68, 68, 68))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(tf_Resultado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(137, 137, 137))
+                .addGap(58, 58, 58))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(171, 171, 171)
-                        .addComponent(bt_Reset))
+                        .addGap(166, 166, 166)
+                        .addComponent(lb_Aficiones))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(173, 173, 173)
-                        .addComponent(lb_Aficiones)))
+                        .addGap(138, 138, 138)
+                        .addComponent(tf_Resultado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(155, 155, 155)
+                        .addComponent(bt_Reset)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(63, 63, 63)
+                .addGap(48, 48, 48)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bt_Musica)
                     .addComponent(bt_Deportes))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                .addGap(47, 47, 47)
                 .addComponent(lb_Aficiones)
                 .addGap(37, 37, 37)
                 .addComponent(tf_Resultado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34)
+                .addGap(39, 39, 39)
                 .addComponent(bt_Reset)
-                .addGap(38, 38, 38))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
+
+        pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void bt_MusicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_MusicaActionPerformed
@@ -156,14 +157,38 @@ public class Aficiones extends javax.swing.JPanel {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(Aficiones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(Aficiones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(Aficiones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(Aficiones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+        //</editor-fold>
+
+        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Aficiones().setVisible(true);
             }
         });
     }
-   
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_Deportes;
     private javax.swing.JButton bt_Musica;
@@ -171,5 +196,4 @@ public class Aficiones extends javax.swing.JPanel {
     private javax.swing.JLabel lb_Aficiones;
     private javax.swing.JTextField tf_Resultado;
     // End of variables declaration//GEN-END:variables
-
 }
