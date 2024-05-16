@@ -2,7 +2,6 @@
 package tema9.interfaces;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
