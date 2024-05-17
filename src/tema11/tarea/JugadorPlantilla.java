@@ -108,6 +108,6 @@ public class JugadorPlantilla {
                 System.err.println("ERROR. Entrada no válida, inténtalo de nuevo.");
                 sc.nextLine(); // Salto de línea
             } // FIN TRY-CATCH
-        } while (opcion != 7); // FIN DO-WHILE
+        } while (opcion != 5); // FIN DO-WHILE
     } // FIN METODO
 }

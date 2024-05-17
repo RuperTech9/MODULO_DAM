@@ -7,18 +7,18 @@ import java.util.Scanner;
  *
  * @author alumno
  */
-public class ComplejoV1 {
+public class NumeroComplejo {
     private double real; // Parte real del número complejo
     private double imag; // Parte imaginaria del número complejo
 
     // CONSTRUCTOR vacio inicializo a cero
-    public ComplejoV1() {
+    public NumeroComplejo() {
         this.real = 0;
         this.imag = 0;
     }
     
     // CONSTRUCTOR con parámetros
-    public ComplejoV1(double real, double imag) {
+    public NumeroComplejo(double real, double imag) {
         this.real = real;
         this.imag = imag;
     }
@@ -55,8 +55,8 @@ public class ComplejoV1 {
     }
     
     // METODO para sumar dos números complejos
-    public ComplejoV1 sumar(ComplejoV1 b) {
-        ComplejoV1 resultado = new ComplejoV1(
+    public NumeroComplejo sumar(NumeroComplejo b) {
+        NumeroComplejo resultado = new NumeroComplejo(
             this.real + b.real,
             this.imag + b.imag
         );
@@ -82,10 +82,10 @@ public class ComplejoV1 {
         System.out.println("Introduce la parte imaginaria de c2:");
         double imag2 = sc.nextDouble();
         
-        ComplejoV1 c1 = new ComplejoV1(real1, imag1);
-        ComplejoV1 c2 = new ComplejoV1(real2, imag2);
+        NumeroComplejo c1 = new NumeroComplejo(real1, imag1);
+        NumeroComplejo c2 = new NumeroComplejo(real2, imag2);
 
-        ComplejoV1 suma = c1.sumar(c2);
+        NumeroComplejo suma = c1.sumar(c2);
 
         System.out.println( c1);
         System.out.println(c2);
