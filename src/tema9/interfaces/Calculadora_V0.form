@@ -23,90 +23,108 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="jTextField1" max="32767" attributes="0"/>
-                  <Group type="102" attributes="0">
+          <Group type="102" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="24" pref="24" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="bt_0" pref="45" max="32767" attributes="0"/>
-                          <Component id="bt_7" alignment="1" max="32767" attributes="0"/>
-                          <Component id="bt_4" alignment="1" max="32767" attributes="0"/>
-                          <Component id="bt_1" alignment="1" max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
-                              <Component id="bt_Clear" min="-2" pref="107" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="bt_5" min="-2" pref="45" max="-2" attributes="0"/>
-                                  <Component id="bt_8" min="-2" pref="45" max="-2" attributes="0"/>
-                                  <Component id="bt_2" min="-2" pref="45" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="bt_3" min="-2" pref="45" max="-2" attributes="0"/>
-                                  <Component id="bt_9" min="-2" pref="45" max="-2" attributes="0"/>
-                                  <Component id="bt_6" min="-2" pref="45" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                      </Group>
-                      <EmptySpace min="-2" pref="101" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jScrollPane1" pref="298" max="32767" attributes="0"/>
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="bt_Dividir" min="-2" pref="60" max="-2" attributes="0"/>
-                                  <Component id="bt_Sumar" max="32767" attributes="0"/>
+                                  <Component id="bt_Porcentaje" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="bt_Inverso" alignment="1" min="-2" pref="54" max="-2" attributes="0"/>
+                                  <Component id="bt_7" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="bt_4" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="bt_1" max="32767" attributes="0"/>
+                                  <Component id="bt_CambiarSigno" alignment="0" max="32767" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="18" max="32767" attributes="0"/>
+                              <EmptySpace min="27" pref="27" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="bt_Restar" min="-2" pref="60" max="-2" attributes="0"/>
+                                  <Component id="bt_0" pref="54" max="32767" attributes="0"/>
+                                  <Component id="bt_8" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="bt_Cuadrado" alignment="0" pref="0" max="32767" attributes="0"/>
+                                  <Component id="bt_2" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="bt_5" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="bt_CE" alignment="0" pref="0" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="bt_Clear" pref="54" max="32767" attributes="0"/>
+                                  <Component id="bt_RaizCuadrada" pref="0" max="32767" attributes="0"/>
+                                  <Component id="bt_9" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="bt_6" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="bt_3" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="bt_Decimal" alignment="0" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="bt_Borrar" pref="54" max="32767" attributes="0"/>
+                                  <Component id="bt_Dividir" max="32767" attributes="0"/>
                                   <Component id="bt_Multiplicar" max="32767" attributes="0"/>
+                                  <Component id="bt_Restar" max="32767" attributes="0"/>
+                                  <Component id="bt_Sumar" max="32767" attributes="0"/>
+                                  <Component id="bt_Resultado" max="32767" attributes="0"/>
                               </Group>
                           </Group>
-                          <Component id="bt_Igual" max="32767" attributes="0"/>
                       </Group>
                   </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="122" max="-2" attributes="0"/>
+                      <Component id="jLabel1" min="-2" pref="122" max="-2" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
+              <EmptySpace min="0" pref="43" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace pref="56" max="32767" attributes="0"/>
-              <Component id="jTextField1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
+              <EmptySpace pref="57" max="32767" attributes="0"/>
+              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+              <Component id="jScrollPane1" min="-2" pref="28" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="bt_0" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="bt_Clear" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="bt_CE" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="bt_Porcentaje" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="bt_Borrar" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="bt_7" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="bt_8" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="bt_9" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="bt_Dividir" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="bt_Cuadrado" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="bt_Inverso" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="bt_RaizCuadrada" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="bt_9" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="bt_8" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="bt_7" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="bt_Multiplicar" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="bt_4" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="bt_5" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="bt_Sumar" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="bt_Restar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="bt_6" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="bt_5" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="bt_4" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="bt_Restar" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="bt_1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="bt_2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="bt_Sumar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="bt_3" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="bt_Igual" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="bt_2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="bt_1" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="bt_Resultado" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="bt_0" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="bt_CambiarSigno" alignment="1" min="-2" pref="23" max="-2" attributes="0"/>
+                  <Component id="bt_Decimal" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
           </Group>
@@ -118,41 +136,65 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="1"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bt_1ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="bt_2">
       <Properties>
         <Property name="text" type="java.lang.String" value="2"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bt_2ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="bt_3">
       <Properties>
         <Property name="text" type="java.lang.String" value="3"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bt_3ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="bt_4">
       <Properties>
         <Property name="text" type="java.lang.String" value="4"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bt_4ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="bt_5">
       <Properties>
         <Property name="text" type="java.lang.String" value="5"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bt_5ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="bt_7">
       <Properties>
         <Property name="text" type="java.lang.String" value="7"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bt_7ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="bt_8">
       <Properties>
         <Property name="text" type="java.lang.String" value="8"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bt_8ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="bt_9">
       <Properties>
         <Property name="text" type="java.lang.String" value="9"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bt_9ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="bt_0">
       <Properties>
@@ -166,41 +208,146 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="C"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bt_ClearActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="bt_Dividir">
       <Properties>
         <Property name="text" type="java.lang.String" value="/"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bt_DividirActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="bt_Multiplicar">
       <Properties>
         <Property name="text" type="java.lang.String" value="*"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bt_MultiplicarActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="bt_Sumar">
       <Properties>
         <Property name="text" type="java.lang.String" value="+"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bt_SumarActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="bt_Restar">
       <Properties>
         <Property name="text" type="java.lang.String" value="-"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bt_RestarActionPerformed"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="bt_Igual">
+    <Component class="javax.swing.JButton" name="bt_Resultado">
       <Properties>
         <Property name="text" type="java.lang.String" value="="/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="jTextField1">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField1"/>
-      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bt_ResultadoActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="bt_6">
       <Properties>
         <Property name="text" type="java.lang.String" value="6"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bt_6ActionPerformed"/>
+      </Events>
+    </Component>
+    <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+      <AuxValues>
+        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+      </AuxValues>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+      <SubComponents>
+        <Component class="javax.swing.JTextArea" name="ta_Display">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+            <Property name="columns" type="int" value="20"/>
+            <Property name="rows" type="int" value="5"/>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
+    <Component class="javax.swing.JLabel" name="jLabel1">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="14" style="1"/>
+        </Property>
+        <Property name="horizontalAlignment" type="int" value="0"/>
+        <Property name="text" type="java.lang.String" value="CALCULADORA"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="bt_Cuadrado">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="x&#xb2;"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bt_CuadradoActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="bt_Inverso">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="1/x"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bt_InversoActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="bt_RaizCuadrada">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="&#x221a;x"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bt_RaizCuadradaActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="bt_CE">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="CE"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bt_CEActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="bt_Porcentaje">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="%"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bt_PorcentajeActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="bt_CambiarSigno">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="&#xb1;"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bt_CambiarSignoActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="bt_Decimal">
+      <Properties>
+        <Property name="text" type="java.lang.String" value=","/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bt_DecimalActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="bt_Borrar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="&#x232b;"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bt_BorrarActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
