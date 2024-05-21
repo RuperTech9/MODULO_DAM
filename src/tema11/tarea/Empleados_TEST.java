@@ -5,10 +5,10 @@ package tema11.tarea;
  *
  * @author Ruper
  */
-public class TestStock {
+public class Empleados_TEST {
     public static void main(String[] args){
         // Objeto EmpleadosEmpresaV0
-        StockProductos stock = new StockProductos();
-        stock.mostrarMenu();
+        EmpleadosEmpresaV0 empresa = new EmpleadosEmpresaV0();
+        empresa.mostrarMenu();
     } // FIN MAIN
 }

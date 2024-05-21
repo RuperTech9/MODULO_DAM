@@ -6,7 +6,7 @@ package tema11.tarea;
  * @author Ruper
  */
 
-enum Posicion {
+enum JugadorPosicion {
     PORTERO, DEFENSA, CENTROCAMPISTA, DELANTERO;
 }
 

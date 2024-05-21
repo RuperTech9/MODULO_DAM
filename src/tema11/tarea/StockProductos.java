@@ -31,7 +31,8 @@ public class StockProductos {
                           "\n2- Baja Producto" +
                           "\n3- Cambio stock de producto" +
                           "\n4- Listar existencias" +
-                          "\n5- Salir" +
+                          "\n5- Listar productos dados de baja" +
+                          "\n6- Salir" +
                           "\n---------------------------------------------------------" +
                           "\nSelecciona una opción: ";
             
@@ -70,6 +71,9 @@ public class StockProductos {
                         System.out.println(existencias);
                         break;
                     case 5:
+                        mostrarProductosDadosDeBaja();
+                        break;
+                    case 6:
                         System.out.println("\nSaliendo...");
                         break;
                     default:
@@ -80,7 +84,7 @@ public class StockProductos {
                 System.err.println("ERROR. Entrada no válida, inténtalo de nuevo.");
                 sc.nextLine(); // Salto de línea
             } // FIN TRY-CATCH
-        } while (opcion != 5); // FIN DO-WHILE
+        } while (opcion != 6); // FIN DO-WHILE
         
         guardarExistenciasEnFichero(existencias);
     } // FIN METODO
@@ -157,6 +161,34 @@ public class StockProductos {
                     pw.close(); // Cerrar PrintWriter
                 if (fw != null)
                     fw.close(); // Cerrar FileWriter
+            } catch (IOException e2) {
+                e2.printStackTrace();
+            }
+        }
+    }
+    
+    // Método para mostrar los productos dados de baja
+    private static void mostrarProductosDadosDeBaja() {
+        BufferedReader br = null;
+        try {
+            br = new BufferedReader(new FileReader(rutaStockAntiguos));
+            String linea;
+            System.out.println("\nListado de Productos Dados de Baja:");
+            while ((linea = br.readLine()) != null) {
+                String[] datos = linea.split("::");
+                String codigo = datos[0];
+                int stock = Integer.parseInt(datos[1]);
+                String fechaBaja = datos[2];
+                System.out.println("Código: " + codigo + " | Stock: " + stock + " | Fecha de Baja: " + fechaBaja);
+            }
+        } catch (FileNotFoundException e) {
+            System.err.println("El archivo " + rutaStockAntiguos + " no se encontró.");
+        } catch (IOException | NumberFormatException | ArrayIndexOutOfBoundsException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (br != null)
+                    br.close(); // Cerrar BufferedReader
             } catch (IOException e2) {
                 e2.printStackTrace();
             }

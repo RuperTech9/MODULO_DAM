@@ -7,7 +7,7 @@ import java.time.LocalDate;
  *
  * @author Ruper
  */
-public class Test {
+public class Empleados_TEST {
     public static void main(String[] args){
         // Objeto EmpleadosEmpresaV1
         EmpleadosEmpresaV1 empresa = new EmpleadosEmpresaV1();

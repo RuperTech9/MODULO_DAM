@@ -21,7 +21,7 @@ public class JugadorPlantilla {
         System.out.println("Introduzca el nombre del jugador:");
         String nombre = scanner.nextLine();
         System.out.println("Introduzca la posición del jugador (PORTERO, DEFENSA, CENTROCAMPISTA, DELANTERO):");
-        Posicion posicion = Posicion.valueOf(scanner.nextLine().toUpperCase());
+        JugadorPosicion posicion = JugadorPosicion.valueOf(scanner.nextLine().toUpperCase());
         System.out.println("Introduzca la estatura del jugador:");
         String estatura = scanner.nextLine();
 
@@ -34,7 +34,7 @@ public class JugadorPlantilla {
     }
 
     public void mostrar(String posicion) {
-        Posicion pos = Posicion.valueOf(posicion.toUpperCase());
+        JugadorPosicion pos = JugadorPosicion.valueOf(posicion.toUpperCase());
         plantilla.values().stream()
                 .filter(j -> j.posicion == pos)
                 .forEach(j -> System.out.println(j.nombre));

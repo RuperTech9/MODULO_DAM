@@ -10,6 +10,9 @@ import java.io.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.util.ArrayList;
+import java.util.List;
+
 
 /**
  *
@@ -75,9 +78,11 @@ public class SocioGestion {
                 break;
             }
         }
+        
         if (socioEliminado != null) {
             socios.remove(socioEliminado);
             guardarBajaEnArchivo(socioEliminado);
+            guardarSociosEnAntiguos(socioEliminado); 
             return true;
         } else {
             return false;
@@ -101,7 +106,8 @@ public class SocioGestion {
     
     // METODO para mostrar el menú
     public void mostrarMenu() {
-        leerEmpleadosDesdeFichero();
+        leerSociosDesdeFichero();
+        
         int opcion = 0;
         do {     
             try {
@@ -112,7 +118,8 @@ public class SocioGestion {
                           "\n3- Modificación" +
                           "\n4- Listado por dni" +
                           "\n5- Listado por antigüedad" +
-                          "\n6- Salir" +
+                          "\n6- Listado bajas" +
+                          "\n7- Salir" +
                           "\n---------------------------------------------------------" +
                           "\nSelecciona una opción: ";
             
@@ -148,6 +155,9 @@ public class SocioGestion {
                         System.out.println(s);
                         break;
                     case 6:
+                        mostrarSociosAntiguos();
+                        break;
+                    case 7:
                         System.out.println("\nSaliendo...");
                         break;
                     default:
@@ -158,13 +168,13 @@ public class SocioGestion {
                 System.err.println("ERROR. Entrada no válida, inténtalo de nuevo.");
                 sc.nextLine(); // Salto de línea
             } // FIN TRY-CATCH
-        } while (opcion != 6); // FIN DO-WHILE
-        guardarEmpleadosEnFichero();
+        } while (opcion != 7); // FIN DO-WHILE
+        guardarSociosEnFichero();
     } // FIN METODO
     
     // PERSISTENCIA DE DATOS
     // METODO para leer los datos de empleados.txt
-    private static void leerEmpleadosDesdeFichero() {
+    private static void leerSociosDesdeFichero() {
         BufferedReader br = null;
         try {
             br = new BufferedReader(new FileReader(rutaSocios));
@@ -189,8 +199,9 @@ public class SocioGestion {
         } // FIN TRY-CATCH-FINALLY
     } // FIN METODO
     
-    // METODO para guardar los empleados en empleados.txt
-    private static void guardarEmpleadosEnFichero() {
+    
+    // METODO para guardar los socios en socios.txt
+    private static void guardarSociosEnFichero() {
         FileWriter fw = null;
         PrintWriter pw = null;
         try {
@@ -216,8 +227,9 @@ public class SocioGestion {
         } // FIN TRY-CATCH-FINALLY
     } // FIN METODO
     
-    // METODO para guardar los empleados eliminados en empleadosAntiguos.txt
-    private static void guardarEmpleadoEnAntiguos(Socio socio) {
+    
+    // METODO para guardar los socios eliminados en sociosAntiguos.txt
+    private static void guardarSociosEnAntiguos(Socio socio) {
         FileWriter fw = null;
         PrintWriter pw = null;
         try {
@@ -241,4 +253,48 @@ public class SocioGestion {
             } // FIN TRY-CATCH INTERNO
         } // FIN TRY-CATCH-FINALLY
     } // FIN METODO
+    
+    // METODO para mostrar los socios antiguos
+    private void mostrarSociosAntiguos() {
+        List<String> sociosAntiguos = leerSociosAntiguosDesdeFichero();
+        if (sociosAntiguos.isEmpty()) {
+            System.out.println("\nNo hay socios antiguos registrados.");
+        } else {
+            System.out.println("\nListado de Socios Antiguos:");
+            for (String socio : sociosAntiguos) {
+                String[] datos = socio.split("::");
+                String dni = datos[0];
+                String nombre = datos[1];
+                String fechaAlta = datos[2];
+                String fechaBaja = datos[3];
+
+                System.out.println("DNI: " + dni +
+                                   "    Nombre: " + nombre +
+                                   "    Fecha Alta: " + fechaAlta +
+                                   "    Fecha Baja: " + fechaBaja);
+            }
+        }
+    }
+
+    private static List<String> leerSociosAntiguosDesdeFichero() {
+        List<String> sociosAntiguos = new ArrayList<>();
+        BufferedReader br = null;
+        try {
+            br = new BufferedReader(new FileReader(rutaSociosAntiguos));
+            String linea;
+            while ((linea = br.readLine()) != null) {
+                sociosAntiguos.add(linea);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (br != null)
+                    br.close(); // Cerrar BufferedReader
+            } catch (IOException e2) {
+                e2.printStackTrace();
+            } // FIN TRY-CATCH INTERNO
+        } // FIN TRY-CATCH-FINALLY
+        return sociosAntiguos;
+    }
 }

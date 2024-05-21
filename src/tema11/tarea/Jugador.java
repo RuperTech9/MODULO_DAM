@@ -9,11 +9,11 @@ public class Jugador {
     int dorsal;
     String dni;
     String nombre;
-    Posicion posicion;
+    JugadorPosicion posicion;
     String estatura;
         
 
-    public Jugador(int dorsal, String dni, String nombre, Posicion posicion, String estatura) {
+    public Jugador(int dorsal, String dni, String nombre, JugadorPosicion posicion, String estatura) {
         this.dorsal = dorsal;
         this.dni = dni;
         this.nombre = nombre;
@@ -45,11 +45,11 @@ public class Jugador {
         this.nombre = nombre;
     }
 
-    public Posicion getPosicion() {
+    public JugadorPosicion getPosicion() {
         return posicion;
     }
 
-    public void setPosicion(Posicion posicion) {
+    public void setPosicion(JugadorPosicion posicion) {
         this.posicion = posicion;
     }
 
