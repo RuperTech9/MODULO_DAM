@@ -11,7 +11,7 @@ import java.util.Scanner;
  *
  * @author alumno
  */
-public class Test {
+public class Alumno_TESTTest {
     public static void main(String[] args) throws FileNotFoundException{
         // Definicion del array list de tipo String
         ArrayList<Alumno> alumnosDAM = new ArrayList<>();
