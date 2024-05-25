@@ -1,2 +1,0 @@
-ruedas::4
-volante::0

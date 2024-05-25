@@ -1,3 +1,0 @@
-Gonzalez::Sara::02/05/1980::03/06/1999::Secretaria::25000.0
-Sanchez::Elena::03/09/1990::02/11/2010::TecnicoFP::30000.0
-Torres::Juan::01/01/1960::24/05/1980::Jefe::60000.0
